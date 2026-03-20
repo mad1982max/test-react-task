@@ -12,7 +12,9 @@ import {
     Chip,
     Snackbar,
     CircularProgress,
+    Typography
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 /**
  * @typedef {Object} ClientsTableProps
@@ -41,22 +43,33 @@ export const ClientsTable = ({ clients }) => {
             <TableBody>
                 {clients.map((client) => (
                     <TableRow key={client.id}>
-                        <TableCell>{client.firstName} {client.lastName}</TableCell>
-                        <TableCell>{client.email}</TableCell>
-                        <TableCell>{client.status}</TableCell>
-                        <TableCell>${client.balance.toFixed(2)}</TableCell>
-                        <TableCell>{new Date(client.createdAt).toLocaleDateString()}</TableCell>
+                        <TableCell>
+                            {client.firstName} {client.lastName}
+                        </TableCell>
+                        <TableCell>
+                            {client.email}
+                        </TableCell>
+                        <TableCell>
+                            {client.status}
+                        </TableCell>
+                        <TableCell>
+                            ${client.balance.toFixed(2)}
+                        </TableCell>
+                        <TableCell>{new Date(client.createdAt).toLocaleDateString()}
+
+                        </TableCell>
                         <TableCell>
                             <Button
                                 variant="contained"
                                 color="primary"
                                 size="small"
-                                href={`/clients/${client.id}`}
-                                style={{ marginRight: 8 }}>
-                                View
+                                component={Link}
+                                to={`/clients/${client.id}`}>
+                                    <Typography>
+                                        View
+                                    </Typography>
                             </Button>
                         </TableCell>
-
                     </TableRow>
                 ))}
             </TableBody>
