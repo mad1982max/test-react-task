@@ -5,6 +5,16 @@ import {
     MenuItem, Alert, CircularProgress
 } from '@mui/material';
 
+/**
+ * @typedef {Object} TransactionType
+ * @property {number} value - Transaction type ID
+ * @property {string} label - Display label for the transaction type
+ * @property {string} direction - Direction of transaction ('in' or 'out')
+ */
+
+/**
+ * @type {TransactionType[]}
+ */
 const TRANSACTION_TYPES = [
     { value: 1, label: 'Deposit', direction: 'in' },
     { value: 2, label: 'Withdrawal', direction: 'out' },
@@ -14,6 +24,21 @@ const TRANSACTION_TYPES = [
     { value: 6, label: 'Credit Out', direction: 'out' },
 ];
 
+/**
+ * @typedef {Object} CreateTransactionDialogProps
+ * @property {boolean} open - Whether the dialog is open
+ * @property {import("../data/mockClients").Client} [account] - The selected account/client object
+ * @property {import("../data/mockClients").Client[]} [accounts] - Array of available accounts/clients
+ * @property {() => void} [onClose] - Callback fired when dialog closes
+ * @property {() => void} [onSuccess] - Callback fired on successful transaction creation
+ */
+
+/**
+ * Dialog component for creating a new transaction
+ * Allows users to select transaction type, amount, and optionally a comment
+ * @param {CreateTransactionDialogProps} props - Component props
+ * @returns {JSX.Element} Rendered dialog component
+ */
 const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSuccess }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
