@@ -43,7 +43,7 @@ export const ClientsTable = ({
                     {clients.map((client) => {
                         const isSelected = selectedIds.includes(client.id);
                         const localDateString = new Date(client.createdAt).toLocaleDateString();
-                        const balanceToDisplay = client.balance.toLocaleString("en-US", {
+                        const balanceToDisplay = Number(client.balance ?? 0).toLocaleString("en-US", {
                             style: "currency",
                             currency: "USD",
                         });
