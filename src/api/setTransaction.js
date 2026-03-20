@@ -1,15 +1,13 @@
-import { getAllClients } from "./getAllClients";
+import { getClientById } from "./getClientById";
 
 /**
  * Fake API to create a transaction and update client balance
- * @param {{accountId:string, transactionType:number, amount:number, comment?:string}} payload
+ * @param {{accountId:string, transactionType:number, amount:number}} payload
  * @param {number} [delay=1000]
  * @returns {Promise<import("../data/mockClients").Client>} Updated client
  */
 export const fakeApiCreate = async (payload, delay = 1000) => {
-    const clients = await getAllClients(delay);
-
-    const client = clients.find((client) => client.id === payload.accountId);
+    const client = await getClientById(payload.accountId, delay);
     if (!client) {
         throw new Error("Client not found");
     }
