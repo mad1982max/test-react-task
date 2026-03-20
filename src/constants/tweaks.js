@@ -95,6 +95,7 @@ export const currencyOptions = {
  * @property {string} ERROR_LOADING_CLIENT - Message shown when client data fails to load.
  * @property {string} ERROR_LOADING_TRANSACTIONS - Message shown when transactions fail to load.
  * @property {string} PAGE_NOT_FOUND - Message shown for unknown routes.
+ * @property {string} FAILED - Message shown for general failures.
  */
 
 /** @type {AppMessages} */
@@ -103,4 +104,5 @@ export const MESSAGE = {
     ERROR_LOADING_CLIENT: "Error loading client",
     ERROR_LOADING_TRANSACTIONS: "Error loading transactions",
     PAGE_NOT_FOUND: "Page not found",
+    FAILED: "Failed"
 };

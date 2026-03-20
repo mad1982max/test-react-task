@@ -6,6 +6,7 @@ import {
 } from '@mui/material';
 import { fakeApiCreate } from '../api/setTransaction';
 import { useClientStore } from '../stores/useClientStore';
+import { MESSAGE } from '../constants/tweaks';
 
 
 /**
@@ -93,14 +94,18 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
             onSuccess?.();
             onClose?.();
         } catch (err) {
-            setError(err.message || "Failed");
+            setError(err.message || MESSAGE.FAILED);
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+        <Dialog
+            open={open}
+            onClose={onClose}
+            maxWidth="sm"
+            fullWidth>
             <DialogTitle>Create Transaction</DialogTitle>
             <DialogContent>
                 {error && (
