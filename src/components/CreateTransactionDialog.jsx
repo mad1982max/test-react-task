@@ -100,14 +100,6 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
         }
     };
 
-
-    // const selectedType = TRANSACTION_TYPES.find((t) => t.value === formData.transactionType);
-    // const balance = parseFloat(activeAccount?.balance || '0');
-    // const amount = parseFloat(formData.amount || '0');
-    // const newBalance = selectedType?.direction === 'in' ? balance + amount : balance - amount;
-
-    // console.log('---New Balance', { newBalance });
-
     return (
         <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
             <DialogTitle>Create Transaction</DialogTitle>
