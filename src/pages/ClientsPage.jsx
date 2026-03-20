@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import {
-    TextField,
-    Select,
-    MenuItem,
     Button,
     Snackbar,
     CircularProgress,
 } from "@mui/material";
 
+import { Filters } from "../components/Filters";
 import { ClientsTable } from "../components/ClientsTable";
 import { useClientStore } from "../stores/useClientStore";
 import { useFetchClients } from "../hooks/useFetchClients";
 import CreateTransactionDialog from "../components/CreateTransactionDialog";
 import { ROWS_PER_PAGE } from "../constants/tweaks";
+import { Layout } from "../components/Layout.jsx";
 
 const ClientsPage = () => {
     const { isLoading, error } = useFetchClients();
@@ -41,28 +40,9 @@ const ClientsPage = () => {
     );
 
     return (
-        <>
+        <Layout>
             <h2>Clients Page</h2>
-
-            {/* Search */}
-            <TextField
-                label="Search"
-                value={filters.search}
-                onChange={(e) => setFilter("search", e.target.value)}
-                sx={{ mr: 2 }}
-            />
-
-            {/* Status filter */}
-            <Select
-                value={filters.status}
-                onChange={(e) => setFilter("status", e.target.value)}
-                sx={{ mr: 2 }}
-            >
-                <MenuItem value="all">All</MenuItem>
-                <MenuItem value="Active">Active</MenuItem>
-                <MenuItem value="Inactive">Inactive</MenuItem>
-                <MenuItem value="Pending">Pending</MenuItem>
-            </Select>
+            <Filters filters={filters} setFilter={setFilter} />
 
             {/* Bulk Action */}
             {selectedIds.length > 0 && (
@@ -95,7 +75,7 @@ const ClientsPage = () => {
             {/* Dialog */}
             <CreateTransactionDialog
                 open={openDialog}
-                accounts={clients.filter((c) => selectedIds.includes(c.id))}
+                accounts={clients.filter((client) => selectedIds.includes(client.id))}
                 onClose={() => setOpenDialog(false)}
                 onSuccess={() => {
                     clearSelection();
@@ -111,7 +91,7 @@ const ClientsPage = () => {
                 onClose={() => setSnackbar(false)}
                 message="Transaction created successfully"
             />
-        </>
+        </Layout>
     );
 };
 
