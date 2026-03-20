@@ -17,12 +17,17 @@ export const ClientInfoCard = ({ client }) => {
                 <Typography variant="h5">
                     {client.firstName} {client.lastName}
                 </Typography>
-                <Stack direction="column" spacing={1} sx={{ mt: 1 }}>
+                <Chip size="small"
+                    label={client.status}
+                    color={chipStatusColors[client.status]}
+                    sx={{ mb: 2 }} />
+                <Stack
+                    direction="column"
+                    spacing={1}
+                    sx={{ mt: 1 }}
+                    alignItems="center">
                     <Typography>Email: {client.email}</Typography>
 
-                    <Typography>
-                        <Chip label={client.status} color={chipStatusColors[client.status]} />
-                    </Typography>
                     <Typography>
                         Balance: {Number(client.balance ?? 0).toLocaleString(locale, currencyOptions)}
                     </Typography>
