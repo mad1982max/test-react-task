@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
     Button,
     Snackbar,
-    CircularProgress,
 } from "@mui/material";
 
 import { Filters } from "../components/Filters";
@@ -12,6 +11,7 @@ import { useFetchClients } from "../hooks/useFetchClients";
 import CreateTransactionDialog from "../components/CreateTransactionDialog";
 import { ROWS_PER_PAGE } from "../constants/tweaks";
 import { Layout } from "../components/Layout.jsx";
+import { ClientsTableSkeleton } from "../components/ClientsTableSkeleton";
 
 const ClientsPage = () => {
     const { isLoading, error } = useFetchClients();
@@ -56,7 +56,7 @@ const ClientsPage = () => {
             )}
 
             {/* Loading */}
-            {isLoading && <CircularProgress />}
+            {isLoading && <ClientsTableSkeleton />}
 
             {/* Error */}
             {error && <div>Error: {error.message}</div>}
