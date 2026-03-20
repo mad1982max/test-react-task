@@ -12,8 +12,8 @@ import { locale, currencyOptions, chipStatusColors, } from "../constants/tweaks"
  */
 export const ClientInfoCard = ({ client }) => {
     return (
-        <Card sx={{ m: 3, maxWidth: 400 }}>
-            <CardContent>
+        <Card sx={{ m: 3, width: 400, backgroundColor: "#f5f5f5" }}>
+            <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <Typography variant="h5">
                     {client.firstName} {client.lastName}
                 </Typography>

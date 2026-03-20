@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-    Button, Tabs, Tab, Box, Alert, Stack, CircularProgress
+    Button, Tabs, Tab, Box, Alert, Stack,
 } from "@mui/material";
 import { ROUTE } from '../constants/routes';
 import { Layout } from "../components/Layout.jsx";
@@ -10,6 +10,7 @@ import { TransactionTable } from "../components/tables/TransactionTable";
 import { TransactionTableSkeleton } from "../components/skeletons/TransactionTableSkeleton";
 import { useFetchClientById } from "../hooks/useFetchClientById";
 import { useFetchClientTransaction } from "../hooks/useFetchClientTransaction";
+import { ClientInfoCardSkeleton } from "../components/skeletons/ClientCardSceleton";
 
 export default function ClientDetailPage() {
     const { id } = useParams();
@@ -38,7 +39,7 @@ export default function ClientDetailPage() {
                     {!client && !loadingClientById && !errorClientById && (
                         <Alert severity="info">Client not found</Alert>
                     )}
-                    {loadingClientById && <CircularProgress />}
+                    {loadingClientById && <ClientInfoCardSkeleton />}
                     {errorClientById && <Alert severity="error">{errorClientById.message}</Alert>}
                     {client && <ClientInfoCard client={client} />}
                 </Stack>
