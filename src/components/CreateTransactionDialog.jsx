@@ -42,7 +42,8 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
 
     const handleSubmit = async () => {
         if (!activeAccount) { setError('Please select an account'); return; }
-        if (!formData.amount || parseFloat(formData.amount) <= 0) {
+        const validAmount = parseFloat(formData.amount);
+        if (isNaN(validAmount) || validAmount <= 0) {
             setError('Please enter a valid amount');
             return;
         }
