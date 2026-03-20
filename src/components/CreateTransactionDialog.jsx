@@ -4,7 +4,8 @@ import {
     Button, TextField, FormControl, InputLabel, Select,
     MenuItem, Alert, CircularProgress
 } from '@mui/material';
-import { fakeApiCreate } from '@/api/transaction';
+import { fakeApiCreate } from '../api/transaction';
+
 
 /**
  * @typedef {Object} TransactionType

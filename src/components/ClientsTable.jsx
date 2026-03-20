@@ -6,73 +6,102 @@ import {
     TableBody,
     Checkbox,
     Button,
-    TextField,
-    Select,
-    MenuItem,
     Chip,
-    Snackbar,
-    CircularProgress,
-    Typography
+    TableFooter,
+    TablePagination,
+    Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useClientStore } from "../stores/useClientStore";
 
-/**
- * @typedef {Object} ClientsTableProps
- * @property {import("../data/mockClients").Client[]} clients - Array of client objects to display in the table
- */
+export const ClientsTable = ({
+    clients,
+    total,
+    page,
+    rowsPerPage,
+    onPageChange,
+}) => {
+    const { selectedIds, toggleId } = useClientStore();
 
-/**
- * Displays clients in a Material-UI table with columns for name, email, status, balance, created date, and actions
- * @param {ClientsTableProps} props - Component props
- * @returns {import('react').ReactElement} Rendered table component
- */
-export const ClientsTable = ({ clients }) => {
     return (
         <Table>
             <TableHead>
                 <TableRow>
+                    <TableCell />
                     <TableCell>Full Name</TableCell>
                     <TableCell>Email</TableCell>
                     <TableCell>Status</TableCell>
                     <TableCell>Balance</TableCell>
                     <TableCell>Created At</TableCell>
                     <TableCell>Actions</TableCell>
-
                 </TableRow>
             </TableHead>
+
             <TableBody>
                 {clients.map((client) => (
                     <TableRow key={client.id}>
                         <TableCell>
+                            <Checkbox
+                                checked={selectedIds.includes(client.id)}
+                                onChange={() => toggleId(client.id)}
+                            />
+                        </TableCell>
+
+                        <TableCell>
                             {client.firstName} {client.lastName}
                         </TableCell>
-                        <TableCell>
-                            {client.email}
-                        </TableCell>
-                        <TableCell>
-                            {client.status}
-                        </TableCell>
-                        <TableCell>
-                            ${client.balance.toFixed(2)}
-                        </TableCell>
-                        <TableCell>{new Date(client.createdAt).toLocaleDateString()}
 
+                        <TableCell>{client.email}</TableCell>
+
+                        <TableCell>
+                            <Chip
+                                label={client.status}
+                                color={
+                                    client.status === "Active"
+                                        ? "success"
+                                        : client.status === "Pending"
+                                            ? "warning"
+                                            : "default"
+                                }
+                            />
                         </TableCell>
+
+                        <TableCell>
+                            {client.balance.toLocaleString("en-US", {
+                                style: "currency",
+                                currency: "USD",
+                            })}
+                        </TableCell>
+
+                        <TableCell>
+                            {new Date(client.createdAt).toLocaleDateString()}
+                        </TableCell>
+
                         <TableCell>
                             <Button
                                 variant="contained"
-                                color="primary"
                                 size="small"
                                 component={Link}
-                                to={`/clients/${client.id}`}>
-                                    <Typography>
-                                        View
-                                    </Typography>
+                                to={`/clients/${client.id}`}
+                            >
+                                <Typography>View</Typography>
                             </Button>
                         </TableCell>
                     </TableRow>
                 ))}
             </TableBody>
+
+            <TableFooter>
+                <TableRow>
+                    <TablePagination
+                        count={total}
+                        page={page}
+                        rowsPerPage={rowsPerPage}
+                        onPageChange={(e, newPage) => onPageChange(newPage)}
+                        rowsPerPageOptions={[rowsPerPage]}
+                    />
+                </TableRow>
+            </TableFooter>
         </Table>
     );
 };

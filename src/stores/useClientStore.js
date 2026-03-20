@@ -28,10 +28,10 @@ export const useClientStore = create((set, get) => ({
 
     setSelected: (client) => set({ selected: client }),
 
-    setFilter: (key, value) => set((state) => {
-        state.filters[key] = value;
-        return { filters: { ...state.filters, [key]: value } };
-    }),
+    setFilter: (key, value) =>
+        set((state) => ({
+            filters: { ...state.filters, [key]: value },
+        })),
 
     toggleId: (id) => {
         const { selectedIds } = get();
@@ -47,6 +47,7 @@ export const useClientStore = create((set, get) => ({
 
     getFiltered: () => {
         const { clients, filters } = get();
+
         return clients.filter((c) => {
             const matchSearch =
                 c.firstName.toLowerCase().includes(filters.search.toLowerCase())
