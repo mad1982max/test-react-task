@@ -1,13 +1,10 @@
+import AppRouter from './routes/AppRouter.jsx';
 import './App.css'
 
 function App() {
 
   return (
-    <>
-      <div className="App">
-        <h1>test task</h1>
-      </div>
-    </>
+    <AppRouter />
   )
 }
 
