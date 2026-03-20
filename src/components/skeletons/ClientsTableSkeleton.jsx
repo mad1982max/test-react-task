@@ -22,7 +22,7 @@ export const ClientsTableSkeleton = () => {
                 <TableBody>
                     {Array.from({ length: ROWS_IN_SKELETON }).map((_, index) => (
                         <TableRow key={index}>
-                            {clientTableHeaders.map((__, cellIndex) => (
+                            {clientTableHeaders.map((_, cellIndex) => (
                                 <TableCell key={cellIndex}>
                                     <Skeleton width="100%" />
                                 </TableCell>

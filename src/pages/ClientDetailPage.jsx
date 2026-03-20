@@ -1,32 +1,33 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-    Button, Tabs, Tab, Box, Alert,
-    Stack
+    Button, Tabs, Tab, Box, Alert, Stack, CircularProgress
 } from "@mui/material";
-import { useClientStore } from "../stores/useClientStore";
 import { ROUTE } from '../constants/routes';
 import { Layout } from "../components/Layout.jsx";
-import { useFetchClientTransaction } from "../hooks/useFetchClientTransaction";
 import { ClientInfoCard } from "../components/ClientInfoCard";
 import { TransactionTable } from "../components/tables/TransactionTable";
 import { TransactionTableSkeleton } from "../components/skeletons/TransactionTableSkeleton";
+import { useFetchClientById } from "../hooks/useFetchClientById";
+import { useFetchClientTransaction } from "../hooks/useFetchClientTransaction";
 
 export default function ClientDetailPage() {
     const { id } = useParams();
-    const { transactions, loading: loadingTransactions, error: errorTransactions } = useFetchClientTransaction(id);
     const navigate = useNavigate();
-    const { clients } = useClientStore();
     const [tab, setTab] = useState(0);
 
-    const client = clients.find((client) => String(client.id) === String(id));
+    const { transactions, loading: loadingTransactions, error: errorTransactions } =
+        useFetchClientTransaction(id);
 
-    if (!client) return <div>Client not found</div>;
+    const { client, loading: loadingClientById, error: errorClientById } = useFetchClientById(id);
 
     return (
         <Layout>
             <Box sx={{ borderBottom: 1, borderColor: "divider", mt: 2 }}>
-                <Tabs value={tab} onChange={(e, v) => setTab(v)}>
+                <Tabs value={tab} onChange={(e, v) => {
+                    if (!client || loadingClientById || errorClientById) return;
+                    setTab(v);
+                }}>
                     <Tab label="Info" />
                     <Tab label="Transactions" />
                 </Tabs>
@@ -34,7 +35,12 @@ export default function ClientDetailPage() {
 
             {tab === 0 && (
                 <Stack sx={{ mt: 5 }} spacing={2} alignItems="center">
-                    <ClientInfoCard client={client} />
+                    {!client && !loadingClientById && !errorClientById && (
+                        <Alert severity="info">Client not found</Alert>
+                    )}
+                    {loadingClientById && <CircularProgress />}
+                    {errorClientById && <Alert severity="error">{errorClientById.message}</Alert>}
+                    {client && <ClientInfoCard client={client} />}
                 </Stack>
             )}
 
@@ -46,16 +52,13 @@ export default function ClientDetailPage() {
                 ) : (
                     <Box sx={{ mt: 2 }}>
                         <TransactionTable transactions={transactions} />
-                    </Box>)
+                    </Box>
+                )
             )}
 
-            <Button
-                sx={{ mt: 2 }}
-                onClick={() => navigate(ROUTE.CLIENTS)}>
+            <Button sx={{ mt: 2 }} onClick={() => navigate(ROUTE.CLIENTS)}>
                 Back
             </Button>
-
-        </Layout >
-
+        </Layout>
     );
 }
