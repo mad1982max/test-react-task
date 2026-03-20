@@ -12,7 +12,7 @@ import { locale, currencyOptions, chipStatusColors, } from "../constants/tweaks"
  */
 export const ClientInfoCard = ({ client }) => {
     return (
-        <Card sx={{ m: 3 }} >
+        <Card sx={{ m: 3, maxWidth: 400 }}>
             <CardContent>
                 <Typography variant="h5">
                     {client.firstName} {client.lastName}

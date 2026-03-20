@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-    Button, Tabs, Tab, Box,
+    Button, Tabs, Tab, Box, Alert,
+    Stack
 } from "@mui/material";
 import { useClientStore } from "../stores/useClientStore";
 import { ROUTE } from '../constants/routes';
@@ -9,6 +10,7 @@ import { Layout } from "../components/Layout.jsx";
 import { useFetchClientTransaction } from "../hooks/useFetchClientTransaction";
 import { ClientInfoCard } from "../components/ClientInfoCard";
 import { TransactionTable } from "../components/tables/TransactionTable";
+import { TransactionTableSkeleton } from "../components/skeletons/TransactionTableSkeleton";
 
 export default function ClientDetailPage() {
     const { id } = useParams();
@@ -31,21 +33,25 @@ export default function ClientDetailPage() {
             </Box>
 
             {tab === 0 && (
-                <ClientInfoCard client={client} />
+                <Stack sx={{ mt: 5 }} spacing={2} alignItems="center">
+                    <ClientInfoCard client={client} />
+                </Stack>
             )}
 
             {tab === 1 && (
                 loadingTransactions ? (
-                    <div>Loading transactions...</div>
+                    <TransactionTableSkeleton />
                 ) : errorTransactions ? (
-                    <div>Error loading transactions: {errorTransactions.message}</div>
+                    <Alert severity="error">Error loading transactions: {errorTransactions.message}</Alert>
                 ) : (
                     <Box sx={{ mt: 2 }}>
                         <TransactionTable transactions={transactions} />
                     </Box>)
             )}
 
-            <Button sx={{ mt: 2 }} onClick={() => navigate(ROUTE.CLIENTS)}>
+            <Button
+                sx={{ mt: 2 }}
+                onClick={() => navigate(ROUTE.CLIENTS)}>
                 Back
             </Button>
 
