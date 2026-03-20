@@ -12,6 +12,12 @@ import { useFetchClientById } from "../hooks/useFetchClientById";
 import { useFetchClientTransaction } from "../hooks/useFetchClientTransaction";
 import { ClientInfoCardSkeleton } from "../components/skeletons/ClientCardSceleton";
 
+/** @typedef {{ id?: string }} ClientDetailRouteParams */
+
+/**
+ * Client detail page with account info and transaction history.
+ * @returns {import("react").ReactElement}
+ */
 export default function ClientDetailPage() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -36,11 +42,20 @@ export default function ClientDetailPage() {
 
             {tab === 0 && (
                 <Stack sx={{ mt: 5 }} spacing={2} alignItems="center">
+
                     {!client && !loadingClientById && !errorClientById && (
-                        <Alert severity="info">Client not found</Alert>
+                        <Alert severity="info">
+                            Client not found
+                        </Alert>
                     )}
+
                     {loadingClientById && <ClientInfoCardSkeleton />}
-                    {errorClientById && <Alert severity="error">{errorClientById.message}</Alert>}
+
+                    {errorClientById && (
+                        <Alert severity="error">
+                            {errorClientById.message}
+                        </Alert>
+                    )}
                     {client && <ClientInfoCard client={client} />}
                 </Stack>
             )}
@@ -49,7 +64,9 @@ export default function ClientDetailPage() {
                 loadingTransactions ? (
                     <TransactionTableSkeleton />
                 ) : errorTransactions ? (
-                    <Alert severity="error">Error loading transactions: {errorTransactions.message}</Alert>
+                    <Alert severity="error">
+                        Error loading transactions: {errorTransactions.message}
+                    </Alert>
                 ) : (
                     <Box sx={{ mt: 2 }}>
                         <TransactionTable transactions={transactions} />

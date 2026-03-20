@@ -1,6 +1,10 @@
 
 import { Card, CardContent, Chip, Skeleton, Stack, Typography } from "@mui/material"
 
+/**
+ * Skeleton placeholder for client info card while loading.
+ * @returns {import("react").ReactElement}
+ */
 export const ClientInfoCardSkeleton = () => {
     return (
         <Card sx={{ m: 3, width: 400, backgroundColor: "#f5f5f5" }}>
