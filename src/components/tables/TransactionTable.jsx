@@ -19,7 +19,9 @@ export const TransactionTable = ({ transactions }) => {
                 <TableHead>
                     <TableRow>
                         {transactionTableHeaders.map((header) => (
-                            <TableCell key={header.id}>{header.label}</TableCell>
+                            <TableCell key={header.id}>
+                                {header.label}
+                            </TableCell>
                         ))}
                     </TableRow>
                 </TableHead>

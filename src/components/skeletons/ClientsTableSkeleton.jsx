@@ -15,7 +15,9 @@ export const ClientsTableSkeleton = () => {
                 <TableHead>
                     <TableRow>
                         {clientTableHeaders.map((header) => (
-                            <TableCell key={header.id}>{header.label}</TableCell>
+                            <TableCell key={header.id}>
+                                {header.label}
+                            </TableCell>
                         ))}
                     </TableRow>
                 </TableHead>

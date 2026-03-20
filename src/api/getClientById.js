@@ -1,3 +1,4 @@
+import { MESSAGE } from "../constants/tweaks";
 import { clients } from "../data/mockClients";
 
 /**
@@ -14,7 +15,7 @@ export const getClientById = (id, delay = 3000) => {
             if (client) {
                 resolve(client);
             } else {
-                reject(new Error("Client not found"));
+                reject(new Error(MESSAGE.CLIENT_NOT_FOUND));
             }
         }, delay);
     });

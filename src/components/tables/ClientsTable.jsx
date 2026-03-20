@@ -48,7 +48,9 @@ export const ClientsTable = ({
                     <TableRow>
                         <TableCell />
                         {clientTableHeaders.map((header) => (
-                            <TableCell key={header.id}>{header.label}</TableCell>
+                            <TableCell key={header.id}>
+                                {header.label}
+                            </TableCell>
                         ))}
                     </TableRow>
                 </TableHead>

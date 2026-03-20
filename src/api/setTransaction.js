@@ -1,3 +1,4 @@
+import { MESSAGE } from "../constants/tweaks";
 import { getClientById } from "./getClientById";
 
 /**
@@ -9,7 +10,7 @@ import { getClientById } from "./getClientById";
 export const fakeApiCreate = async (payload, delay = 1000) => {
     const client = await getClientById(payload.accountId, delay);
     if (!client) {
-        throw new Error("Client not found");
+        throw new Error(MESSAGE.CLIENT_NOT_FOUND);
     }
 
     const TRANSACTION_TYPES = {

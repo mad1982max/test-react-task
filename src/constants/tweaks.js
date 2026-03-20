@@ -79,3 +79,19 @@ export const currencyOptions = {
     style: "currency",
     currency: "USD",
 };
+
+/**
+ * @typedef {Object} AppMessages
+ * @property {string} CLIENT_NOT_FOUND - Message shown when client does not exist.
+ * @property {string} ERROR_LOADING_CLIENT - Message shown when client data fails to load.
+ * @property {string} ERROR_LOADING_TRANSACTIONS - Message shown when transactions fail to load.
+ * @property {string} PAGE_NOT_FOUND - Message shown for unknown routes.
+ */
+
+/** @type {AppMessages} */
+export const MESSAGE = {
+    CLIENT_NOT_FOUND: "Client not found",
+    ERROR_LOADING_CLIENT: "Error loading client",
+    ERROR_LOADING_TRANSACTIONS: "Error loading transactions",
+    PAGE_NOT_FOUND: "Page not found",
+};

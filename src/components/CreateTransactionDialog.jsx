@@ -105,19 +105,28 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
             <DialogContent>
                 {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
                 <FormControl fullWidth sx={{ mt: 1 }}>
-                    <InputLabel>Type</InputLabel>
+                    <InputLabel>
+                        Type
+                    </InputLabel>
                     <Select value={formData.transactionType}
                         onChange={(e) => handleChange('transactionType', e.target.value)}>
                         {TRANSACTION_TYPES.map((t) => (
-                            <MenuItem key={t.value} value={t.value}>{t.label}</MenuItem>
+                            <MenuItem key={t.value} value={t.value}>{t.label}
+                            </MenuItem>
                         ))}
                     </Select>
                 </FormControl>
-                <TextField label="Amount" type="number" fullWidth sx={{ mt: 2 }}
-                    value={formData.amount} onChange={(e) => handleChange('amount', e.target.value)} />
+                <TextField
+                    label="Amount"
+                    type="number"
+                    fullWidth sx={{ mt: 2 }}
+                    value={formData.amount}
+                    onChange={(e) => handleChange('amount', e.target.value)} />
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose} disabled={loading}>Cancel</Button>
+                <Button onClick={onClose} disabled={loading}>
+                    Cancel
+                </Button>
                 <Button variant="contained" onClick={handleSubmit} disabled={loading}>
                     {loading ? <CircularProgress size={16} /> : 'Submit'}
                 </Button>

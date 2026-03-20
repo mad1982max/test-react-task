@@ -11,6 +11,7 @@ import { TransactionTableSkeleton } from "../components/skeletons/TransactionTab
 import { useFetchClientById } from "../hooks/useFetchClientById";
 import { useFetchClientTransaction } from "../hooks/useFetchClientTransaction";
 import { ClientInfoCardSkeleton } from "../components/skeletons/ClientCardSceleton";
+import { MESSAGE } from "../constants/tweaks";
 
 /** @typedef {{ id?: string }} ClientDetailRouteParams */
 
@@ -45,7 +46,7 @@ export default function ClientDetailPage() {
 
                     {!client && !loadingClientById && !errorClientById && (
                         <Alert severity="info">
-                            Client not found
+                            {MESSAGE.CLIENT_NOT_FOUND}
                         </Alert>
                     )}
 
@@ -53,7 +54,7 @@ export default function ClientDetailPage() {
 
                     {errorClientById && (
                         <Alert severity="error">
-                            {errorClientById.message}
+                            {MESSAGE.ERROR_LOADING_CLIENT}: {errorClientById.message}
                         </Alert>
                     )}
                     {client && <ClientInfoCard client={client} />}
@@ -65,7 +66,7 @@ export default function ClientDetailPage() {
                     <TransactionTableSkeleton />
                 ) : errorTransactions ? (
                     <Alert severity="error">
-                        Error loading transactions: {errorTransactions.message}
+                        {MESSAGE.ERROR_LOADING_TRANSACTIONS}: {errorTransactions.message}
                     </Alert>
                 ) : (
                     <Box sx={{ mt: 2 }}>

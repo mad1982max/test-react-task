@@ -1,4 +1,6 @@
+import { MESSAGE } from '../constants/tweaks.js';
 import { Layout } from '../components/Layout.jsx';
+import { Typography } from '@mui/material';
 
 /**
  * Page component that displays a 404 Not Found error
@@ -8,7 +10,9 @@ import { Layout } from '../components/Layout.jsx';
 const NotFoundPage = () => {
     return (
         <Layout>
-            <h2>404 — Not Found</h2>
+            <Typography variant="h2">
+                {MESSAGE.PAGE_NOT_FOUND}
+            </Typography>
         </Layout>
     );
 }
