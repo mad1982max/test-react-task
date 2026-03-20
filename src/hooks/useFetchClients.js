@@ -9,13 +9,12 @@ import { getAllClients } from '../api/getAllClients';
  * @property {Error|null} error - Error object if fetch failed, null otherwise
  */
 export const useFetchClients = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
     const { setClients, clients } = useClientStore();
+    const [isLoading, setIsLoading] = useState(() => clients.length === 0);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (clients.length > 0) return;
-        setIsLoading(true);
         getAllClients()
             .then((data) => {
                 setClients(data);
@@ -26,6 +25,6 @@ export const useFetchClients = () => {
             .finally(() => {
                 setIsLoading(false);
             });
-    }, [setClients]);
+    }, [clients.length, setClients]);
     return { isLoading, error };
 }

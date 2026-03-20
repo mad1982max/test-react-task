@@ -3,36 +3,42 @@ import { getClientById } from "../api/getClientById";
 import { useEffect, useState } from "react";
 
 export const useFetchClientById = (clientId) => {
-    const [client, setClient] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const { clients } = useClientStore();
+    const currentId = String(clientId ?? "");
+    const storeClient = clients.find((c) => String(c.id) === currentId) || null;
+
+    const [fetchedById, setFetchedById] = useState({ id: "", client: null });
+    const [errorById, setErrorById] = useState({ id: "", error: null });
 
     useEffect(() => {
-        if (!clientId) {
-            setClient(null);
-            setError(null);
-            setLoading(false);
+        if (!currentId || storeClient) {
             return;
         }
 
-        const found = clients.find((c) => String(c.id) === String(clientId));
-        if (found) {
-            setClient(found);
-            setError(null);
-            setLoading(false);
-            return;
-        }
+        let active = true;
 
-        setLoading(true);
-        setError(null);
-        getClientById(clientId)
+        getClientById(currentId)
             .then((data) => {
-                setClient(data);
+                if (!active) return;
+                setFetchedById({ id: currentId, client: data });
+                setErrorById({ id: currentId, error: null });
             })
-            .catch((err) => setError(err))
-            .finally(() => setLoading(false));
-    }, [clientId, clients]);
+            .catch((err) => {
+                if (!active) return;
+                setFetchedById({ id: currentId, client: null });
+                setErrorById({ id: currentId, error: err });
+            });
+
+        return () => {
+            active = false;
+        };
+    }, [currentId, storeClient]);
+
+    const fetchedClient = fetchedById.id === currentId ? fetchedById.client : null;
+    const error = errorById.id === currentId ? errorById.error : null;
+    const client = storeClient || fetchedClient;
+    const hasSettledForCurrentId = fetchedById.id === currentId || errorById.id === currentId;
+    const loading = Boolean(currentId) && !storeClient && !hasSettledForCurrentId;
 
     return { client, loading, error };
 }
