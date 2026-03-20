@@ -9,11 +9,13 @@ import { apiFetchClients } from '../api/fetchClients';
  * @property {Error|null} error - Error object if fetch failed, null otherwise
  */
 export const useFetchClients = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const { setClients } = useClientStore();
+    const { setClients, clients } = useClientStore();
 
     useEffect(() => {
+        if (clients.length > 0) return;
+        setIsLoading(true);
         apiFetchClients()
             .then((data) => {
                 setClients(data);

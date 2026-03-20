@@ -24,7 +24,7 @@ export default function ClientDetailPage() {
 
                     <Typography>Email: {client.email}</Typography>
                     <Typography>Status: {client.status}</Typography>
-                    <Typography>Balance: ${client.balance.toFixed(2)}</Typography>
+                    <Typography>Balance: ${Number(client.balance).toFixed(2)}</Typography>
 
                     <Button sx={{ mt: 2 }} onClick={() => navigate(ROUTE.CLIENTS)}>
                         Back

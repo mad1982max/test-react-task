@@ -6,7 +6,7 @@
  * @property {string} lastName - Client's last name
  * @property {string} email - Client's email address
  * @property {string} status - Client status ("Active", "Inactive", or "Pending")
- * @property {number} balance - Client's account balance
+ * @property {string} [balance] - Client's account balance (optional)
  * @property {string} createdAt - ISO 8601 timestamp when client was created
  */
 
@@ -21,7 +21,7 @@ export const clients = [
         lastName: "Doe",
         email: "john.doe@example.com",
         status: "Active",
-        balance: 1250.75,
+        balance: '1250.75',
         createdAt: "2024-12-01T10:15:00Z"
     },
     {
@@ -30,7 +30,7 @@ export const clients = [
         lastName: "Smith",
         email: "jane.smith@example.com",
         status: "Inactive",
-        balance: 540.00,
+        balance: '540.00',
         createdAt: "2024-11-20T08:30:00Z"
     },
     {
@@ -39,7 +39,7 @@ export const clients = [
         lastName: "Brown",
         email: "michael.brown@example.com",
         status: "Pending",
-        balance: 0,
+        balance: '0',
         createdAt: "2025-01-05T14:00:00Z"
     },
     {
@@ -48,7 +48,7 @@ export const clients = [
         lastName: "Wilson",
         email: "emily.wilson@example.com",
         status: "Active",
-        balance: 980.50,
+        balance: '980.50',
         createdAt: "2025-02-10T09:45:00Z"
     },
     {
@@ -57,7 +57,7 @@ export const clients = [
         lastName: "Taylor",
         email: "david.taylor@example.com",
         status: "Active",
-        balance: 310.20,
+        balance: '310.20',
         createdAt: "2024-10-15T12:10:00Z"
     },
     {
@@ -66,7 +66,7 @@ export const clients = [
         lastName: "Anderson",
         email: "sophia.anderson@example.com",
         status: "Pending",
-        balance: 1500.00,
+        balance: '1500.00',
         createdAt: "2025-02-01T16:20:00Z"
     },
     {
@@ -75,7 +75,7 @@ export const clients = [
         lastName: "Clark",
         email: "daniel.clark@example.com",
         status: "Inactive",
-        balance: 75.99,
+        balance: '75.99',
         createdAt: "2024-09-30T11:00:00Z"
     },
     {
@@ -84,7 +84,7 @@ export const clients = [
         lastName: "Martinez",
         email: "olivia.martinez@example.com",
         status: "Active",
-        balance: 2200.00,
+        balance: '2200.00',
         createdAt: "2025-01-25T13:50:00Z"
     },
     {
@@ -93,7 +93,7 @@ export const clients = [
         lastName: "Garcia",
         email: "james.garcia@example.com",
         status: "Active",
-        balance: 1250.00,
+        balance: '1250.00',
         createdAt: "2025-02-15T10:30:00Z"
     },
     {
@@ -102,7 +102,7 @@ export const clients = [
         lastName: "Johnson",
         email: "liam.johnson@example.com",
         status: "Inactive",
-        balance: 845.30,
+        balance: '845.30',
         createdAt: "2025-02-16T09:15:00Z"
     },
     {
@@ -111,7 +111,7 @@ export const clients = [
         lastName: "Lee",
         email: "emma.lee@example.com",
         status: "Pending",
-        balance: 125.00,
+        balance: '125.00',
         createdAt: "2025-02-17T11:40:00Z"
     },
     {
@@ -120,7 +120,7 @@ export const clients = [
         lastName: "Walker",
         email: "noah.walker@example.com",
         status: "Active",
-        balance: 2160.55,
+        balance: '2160.55',
         createdAt: "2025-02-18T08:20:00Z"
     },
     {
@@ -129,7 +129,7 @@ export const clients = [
         lastName: "Hall",
         email: "ava.hall@example.com",
         status: "Inactive",
-        balance: 63.40,
+        balance: '63.40',
         createdAt: "2025-02-19T12:05:00Z"
     },
     {
@@ -138,7 +138,7 @@ export const clients = [
         lastName: "Allen",
         email: "william.allen@example.com",
         status: "Pending",
-        balance: 954.10,
+        balance: '954.10',
         createdAt: "2025-02-20T10:45:00Z"
     },
     {
@@ -147,7 +147,7 @@ export const clients = [
         lastName: "Young",
         email: "isabella.young@example.com",
         status: "Active",
-        balance: 3300.00,
+        balance: '3300.00',
         createdAt: "2025-02-21T14:10:00Z"
     },
     {
@@ -156,7 +156,7 @@ export const clients = [
         lastName: "King",
         email: "lucas.king@example.com",
         status: "Inactive",
-        balance: 470.85,
+        balance: '470.85',
         createdAt: "2025-02-22T16:30:00Z"
     },
     {
@@ -165,7 +165,7 @@ export const clients = [
         lastName: "Wright",
         email: "mia.wright@example.com",
         status: "Pending",
-        balance: 0,
+        balance: '0',
         createdAt: "2025-02-23T09:55:00Z"
     },
     {
@@ -174,7 +174,7 @@ export const clients = [
         lastName: "Scott",
         email: "ethan.scott@example.com",
         status: "Active",
-        balance: 780.25,
+        balance: '780.25',
         createdAt: "2025-02-24T13:35:00Z"
     },
     {
@@ -183,7 +183,7 @@ export const clients = [
         lastName: "Green",
         email: "charlotte.green@example.com",
         status: "Inactive",
-        balance: 95.15,
+        balance: '95.15',
         createdAt: "2025-02-25T10:05:00Z"
     },
     {
@@ -192,7 +192,7 @@ export const clients = [
         lastName: "Baker",
         email: "mason.baker@example.com",
         status: "Pending",
-        balance: 1450.00,
+        balance: '1450.00',
         createdAt: "2025-02-26T11:25:00Z"
     },
     {
@@ -201,7 +201,7 @@ export const clients = [
         lastName: "Adams",
         email: "amelia.adams@example.com",
         status: "Active",
-        balance: 2640.77,
+        balance: '2640.77',
         createdAt: "2025-02-27T15:40:00Z"
     },
     {
@@ -210,7 +210,7 @@ export const clients = [
         lastName: "Nelson",
         email: "logan.nelson@example.com",
         status: "Inactive",
-        balance: 305.50,
+        balance: '305.50',
         createdAt: "2025-02-28T08:50:00Z"
     },
     {
@@ -219,7 +219,7 @@ export const clients = [
         lastName: "Carter",
         email: "harper.carter@example.com",
         status: "Pending",
-        balance: 512.10,
+        balance: '512.10',
         createdAt: "2025-03-01T17:15:00Z"
     },
     {
@@ -228,7 +228,7 @@ export const clients = [
         lastName: "Mitchell",
         email: "elijah.mitchell@example.com",
         status: "Active",
-        balance: 1985.00,
+        balance: '1985.00',
         createdAt: "2025-03-02T12:20:00Z"
     },
     {
@@ -237,7 +237,7 @@ export const clients = [
         lastName: "Perez",
         email: "evelyn.perez@example.com",
         status: "Inactive",
-        balance: 42.90,
+        balance: '42.90',
         createdAt: "2025-03-03T09:35:00Z"
     },
     {
@@ -246,7 +246,7 @@ export const clients = [
         lastName: "Roberts",
         email: "benjamin.roberts@example.com",
         status: "Pending",
-        balance: 670.30,
+        balance: '670.30',
         createdAt: "2025-03-04T10:50:00Z"
     },
     {
@@ -255,7 +255,7 @@ export const clients = [
         lastName: "Turner",
         email: "sofia.turner@example.com",
         status: "Active",
-        balance: 2890.66,
+        balance: '2890.66',
         createdAt: "2025-03-05T13:45:00Z"
     },
     {
@@ -264,7 +264,7 @@ export const clients = [
         lastName: "Phillips",
         email: "jacob.phillips@example.com",
         status: "Inactive",
-        balance: 125.70,
+        balance: '125.70',
         createdAt: "2025-03-06T14:30:00Z"
     },
     {
@@ -273,7 +273,7 @@ export const clients = [
         lastName: "Campbell",
         email: "avery.campbell@example.com",
         status: "Pending",
-        balance: 980.00,
+        balance: '980.00',
         createdAt: "2025-03-07T08:05:00Z"
     },
     {
@@ -282,7 +282,7 @@ export const clients = [
         lastName: "Parker",
         email: "henry.parker@example.com",
         status: "Active",
-        balance: 1745.25,
+        balance: '1745.25',
         createdAt: "2025-03-08T16:10:00Z"
     },
     {
@@ -291,7 +291,7 @@ export const clients = [
         lastName: "Evans",
         email: "ella.evans@example.com",
         status: "Inactive",
-        balance: 10.00,
+        balance: '10.00',
         createdAt: "2025-03-09T12:00:00Z"
     },
     {
@@ -300,7 +300,7 @@ export const clients = [
         lastName: "Edwards",
         email: "alexander.edwards@example.com",
         status: "Pending",
-        balance: 450.42,
+        balance: '450.42',
         createdAt: "2025-03-10T11:55:00Z"
     },
     {
@@ -309,7 +309,7 @@ export const clients = [
         lastName: "Collins",
         email: "scarlett.collins@example.com",
         status: "Active",
-        balance: 3120.12,
+        balance: '3120.12',
         createdAt: "2025-03-11T15:35:00Z"
     },
     {
@@ -318,7 +318,7 @@ export const clients = [
         lastName: "Stewart",
         email: "daniel.stewart@example.com",
         status: "Inactive",
-        balance: 220.00,
+        balance: '220.00',
         createdAt: "2025-03-12T09:20:00Z"
     },
     {
@@ -327,7 +327,7 @@ export const clients = [
         lastName: "Sanchez",
         email: "aria.sanchez@example.com",
         status: "Pending",
-        balance: 760.88,
+        balance: '760.88',
         createdAt: "2025-03-13T10:40:00Z"
     },
     {
@@ -336,7 +336,7 @@ export const clients = [
         lastName: "Morris",
         email: "jack.morris@example.com",
         status: "Active",
-        balance: 1430.30,
+        balance: '1430.30',
         createdAt: "2025-03-14T13:25:00Z"
     },
     {
@@ -345,7 +345,7 @@ export const clients = [
         lastName: "Rogers",
         email: "chloe.rogers@example.com",
         status: "Inactive",
-        balance: 99.99,
+        balance: '99.99',
         createdAt: "2025-03-15T14:45:00Z"
     },
     {
@@ -354,7 +354,7 @@ export const clients = [
         lastName: "Reed",
         email: "samuel.reed@example.com",
         status: "Pending",
-        balance: 2500.00,
+        balance: '2500.00',
         createdAt: "2025-03-16T08:15:00Z"
     },
     {
@@ -363,7 +363,7 @@ export const clients = [
         lastName: "Cook",
         email: "lily.cook@example.com",
         status: "Active",
-        balance: 1840.17,
+        balance: '1840.17',
         createdAt: "2025-03-17T12:10:00Z"
     },
     {
@@ -372,7 +372,7 @@ export const clients = [
         lastName: "Morgan",
         email: "matthew.morgan@example.com",
         status: "Inactive",
-        balance: 55.00,
+        balance: '55.00',
         createdAt: "2025-03-18T16:20:00Z"
     },
     {
@@ -381,7 +381,7 @@ export const clients = [
         lastName: "Bell",
         email: "grace.bell@example.com",
         status: "Pending",
-        balance: 875.60,
+        balance: '875.60',
         createdAt: "2025-03-19T10:05:00Z"
     },
     {
@@ -390,7 +390,7 @@ export const clients = [
         lastName: "Murphy",
         email: "joseph.murphy@example.com",
         status: "Active",
-        balance: 2099.90,
+        balance: '2099.90',
         createdAt: "2025-03-20T11:50:00Z"
     },
     {
@@ -399,7 +399,7 @@ export const clients = [
         lastName: "Bailey",
         email: "hannah.bailey@example.com",
         status: "Inactive",
-        balance: 130.25,
+        balance: '130.25',
         createdAt: "2025-03-21T09:30:00Z"
     },
     {
@@ -408,7 +408,7 @@ export const clients = [
         lastName: "Rivera",
         email: "david.rivera@example.com",
         status: "Pending",
-        balance: 1180.00,
+        balance: '1180.00',
         createdAt: "2025-03-22T14:55:00Z"
     },
     {
@@ -417,7 +417,7 @@ export const clients = [
         lastName: "Cooper",
         email: "zoe.cooper@example.com",
         status: "Active",
-        balance: 3550.45,
+        balance: '3550.45',
         createdAt: "2025-03-23T13:00:00Z"
     },
     {
@@ -426,7 +426,7 @@ export const clients = [
         lastName: "Richardson",
         email: "owen.richardson@example.com",
         status: "Inactive",
-        balance: 87.75,
+        balance: '87.75',
         createdAt: "2025-03-24T08:40:00Z"
     },
     {
@@ -435,7 +435,7 @@ export const clients = [
         lastName: "Cox",
         email: "nora.cox@example.com",
         status: "Pending",
-        balance: 620.00,
+        balance: '620.00',
         createdAt: "2025-03-25T10:15:00Z"
     },
     {
@@ -444,7 +444,7 @@ export const clients = [
         lastName: "Howard",
         email: "gabriel.howard@example.com",
         status: "Active",
-        balance: 2750.80,
+        balance: '2750.80',
         createdAt: "2025-03-26T12:45:00Z"
     },
     {
@@ -453,7 +453,7 @@ export const clients = [
         lastName: "Ward",
         email: "penelope.ward@example.com",
         status: "Inactive",
-        balance: 49.95,
+        balance: '49.95',
         createdAt: "2025-03-27T15:10:00Z"
     },
     {
@@ -462,7 +462,7 @@ export const clients = [
         lastName: "Torres",
         email: "julian.torres@example.com",
         status: "Pending",
-        balance: 910.10,
+        balance: '910.10',
         createdAt: "2025-03-28T11:35:00Z"
     },
     {
@@ -471,7 +471,7 @@ export const clients = [
         lastName: "Peterson",
         email: "riley.peterson@example.com",
         status: "Active",
-        balance: 1680.00,
+        balance: '1680.00',
         createdAt: "2025-03-29T09:05:00Z"
     },
     {
@@ -480,7 +480,7 @@ export const clients = [
         lastName: "Gray",
         email: "sebastian.gray@example.com",
         status: "Inactive",
-        balance: 199.99,
+        balance: '199.99',
         createdAt: "2025-03-30T16:25:00Z"
     },
     {
@@ -489,7 +489,7 @@ export const clients = [
         lastName: "Ramirez",
         email: "layla.ramirez@example.com",
         status: "Pending",
-        balance: 740.20,
+        balance: '740.20',
         createdAt: "2025-03-31T10:30:00Z"
     },
     {
@@ -498,7 +498,7 @@ export const clients = [
         lastName: "James",
         email: "carter.james@example.com",
         status: "Active",
-        balance: 2425.75,
+        balance: '2425.75',
         createdAt: "2025-04-01T12:20:00Z"
     },
     {
@@ -507,7 +507,7 @@ export const clients = [
         lastName: "Watson",
         email: "stella.watson@example.com",
         status: "Inactive",
-        balance: 68.35,
+        balance: '68.35',
         createdAt: "2025-04-02T14:00:00Z"
     }
 ];

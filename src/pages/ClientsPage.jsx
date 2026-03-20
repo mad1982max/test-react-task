@@ -50,7 +50,7 @@ const ClientsPage = () => {
                     variant="contained"
                     fullWidth
                     onClick={() => setOpenDialog(true)}
-                    sx={{ mr: 2, }}
+                    sx={{ mr: 2 }}
                 >
                     Bulk Action
                 </Button>

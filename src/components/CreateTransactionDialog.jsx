@@ -5,6 +5,7 @@ import {
     MenuItem, Alert, CircularProgress
 } from '@mui/material';
 import { fakeApiCreate } from '../api/transaction';
+import { useClientStore } from '../stores/useClientStore';
 
 
 /**
@@ -42,8 +43,7 @@ const TRANSACTION_TYPES = [
  * @returns {import('react').ReactElement} Rendered dialog component
  */
 const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSuccess }) => {
-
-    console.log('---CreateTransactionDialog render', { open, account, accounts });
+    const { setClients, clients } = useClientStore();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [selectedAccountId, setSelectedAccountId] = useState('');
@@ -70,32 +70,43 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
         setFormData((prev) => ({ ...prev, [field]: value }));
 
     const handleSubmit = async () => {
-        if (!activeAccount) { setError('Please select an account'); return; }
+        if (!activeAccount) { setError("Please select an account"); return; }
         const validAmount = parseFloat(formData.amount);
         if (isNaN(validAmount) || validAmount <= 0) {
-            setError('Please enter a valid amount');
+            setError("Please enter a valid amount");
             return;
         }
+
         setLoading(true);
         setError(null);
+
         try {
-            await fakeApiCreate({ accountId: activeAccount.id, ...formData, amount: parseFloat(formData.amount) });
+            const updatedClient = await fakeApiCreate({
+                accountId: activeAccount.id,
+                transactionType: formData.transactionType,
+                amount: validAmount,
+                comment: formData.comment,
+            });
+
+            const updatedClients = clients.map((client) => (client.id === updatedClient.id ? updatedClient : client));
+            setClients(updatedClients);
+
             onSuccess?.();
             onClose?.();
-
         } catch (err) {
-            setError(err.message || 'Failed');
+            setError(err.message || "Failed");
         } finally {
             setLoading(false);
         }
     };
 
-    const selectedType = TRANSACTION_TYPES.find((t) => t.value === formData.transactionType);
-    // @ts-ignore
-    const balance = parseFloat(activeAccount?.balance || 0);
-    // @ts-ignore
-    const amount = parseFloat(formData.amount || 0);
-    const newBalance = selectedType?.direction === 'in' ? balance + amount : balance - amount;
+
+    // const selectedType = TRANSACTION_TYPES.find((t) => t.value === formData.transactionType);
+    // const balance = parseFloat(activeAccount?.balance || '0');
+    // const amount = parseFloat(formData.amount || '0');
+    // const newBalance = selectedType?.direction === 'in' ? balance + amount : balance - amount;
+
+    // console.log('---New Balance', { newBalance });
 
     return (
         <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
