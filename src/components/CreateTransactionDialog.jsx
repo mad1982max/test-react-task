@@ -85,7 +85,6 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
                 accountId: activeAccount.id,
                 transactionType: formData.transactionType,
                 amount: validAmount,
-                comment: formData.comment,
             });
 
             const updatedClients = clients.map((client) => (client.id === updatedClient.id ? updatedClient : client));
