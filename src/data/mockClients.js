@@ -1,7 +1,7 @@
 
 /**
  * @typedef {Object} Client
- * @property {number} id - Unique identifier for the client
+ * @property {string} id - Unique identifier for the client
  * @property {string} firstName - Client's first name
  * @property {string} lastName - Client's last name
  * @property {string} email - Client's email address
@@ -16,7 +16,7 @@
  */
 export const clients = [
     {
-        id: 1,
+        id: "1",
         firstName: "John",
         lastName: "Doe",
         email: "john.doe@example.com",
@@ -25,7 +25,7 @@ export const clients = [
         createdAt: "2024-12-01T10:15:00Z"
     },
     {
-        id: 2,
+        id: "2",
         firstName: "Jane",
         lastName: "Smith",
         email: "jane.smith@example.com",
@@ -34,7 +34,7 @@ export const clients = [
         createdAt: "2024-11-20T08:30:00Z"
     },
     {
-        id: 3,
+        id: "3",
         firstName: "Michael",
         lastName: "Brown",
         email: "michael.brown@example.com",
@@ -43,7 +43,7 @@ export const clients = [
         createdAt: "2025-01-05T14:00:00Z"
     },
     {
-        id: 4,
+        id: "4",
         firstName: "Emily",
         lastName: "Wilson",
         email: "emily.wilson@example.com",
@@ -52,7 +52,7 @@ export const clients = [
         createdAt: "2025-02-10T09:45:00Z"
     },
     {
-        id: 5,
+        id: "5",
         firstName: "David",
         lastName: "Taylor",
         email: "david.taylor@example.com",
@@ -61,7 +61,7 @@ export const clients = [
         createdAt: "2024-10-15T12:10:00Z"
     },
     {
-        id: 6,
+        id: "6",
         firstName: "Sophia",
         lastName: "Anderson",
         email: "sophia.anderson@example.com",
@@ -70,7 +70,7 @@ export const clients = [
         createdAt: "2025-02-01T16:20:00Z"
     },
     {
-        id: 7,
+        id: "7",
         firstName: "Daniel",
         lastName: "Clark",
         email: "daniel.clark@example.com",
@@ -79,7 +79,7 @@ export const clients = [
         createdAt: "2024-09-30T11:00:00Z"
     },
     {
-        id: 8,
+        id: "8",
         firstName: "Olivia",
         lastName: "Martinez",
         email: "olivia.martinez@example.com",
@@ -88,7 +88,7 @@ export const clients = [
         createdAt: "2025-01-25T13:50:00Z"
     },
     {
-        id: 9,
+        id: "9",
         firstName: "James",
         lastName: "Garcia",
         email: "james.garcia@example.com",
@@ -97,7 +97,7 @@ export const clients = [
         createdAt: "2025-02-15T10:30:00Z"
     },
     {
-        id: 10,
+        id: "10",
         firstName: "Liam",
         lastName: "Johnson",
         email: "liam.johnson@example.com",
@@ -106,7 +106,7 @@ export const clients = [
         createdAt: "2025-02-16T09:15:00Z"
     },
     {
-        id: 11,
+        id: "11",
         firstName: "Emma",
         lastName: "Lee",
         email: "emma.lee@example.com",
@@ -115,7 +115,7 @@ export const clients = [
         createdAt: "2025-02-17T11:40:00Z"
     },
     {
-        id: 12,
+        id: "12",
         firstName: "Noah",
         lastName: "Walker",
         email: "noah.walker@example.com",
@@ -124,7 +124,7 @@ export const clients = [
         createdAt: "2025-02-18T08:20:00Z"
     },
     {
-        id: 13,
+        id: "13",
         firstName: "Ava",
         lastName: "Hall",
         email: "ava.hall@example.com",
@@ -133,7 +133,7 @@ export const clients = [
         createdAt: "2025-02-19T12:05:00Z"
     },
     {
-        id: 14,
+        id: "14",
         firstName: "William",
         lastName: "Allen",
         email: "william.allen@example.com",
@@ -142,7 +142,7 @@ export const clients = [
         createdAt: "2025-02-20T10:45:00Z"
     },
     {
-        id: 15,
+        id: "15",
         firstName: "Isabella",
         lastName: "Young",
         email: "isabella.young@example.com",
@@ -151,7 +151,7 @@ export const clients = [
         createdAt: "2025-02-21T14:10:00Z"
     },
     {
-        id: 16,
+        id: "16",
         firstName: "Lucas",
         lastName: "King",
         email: "lucas.king@example.com",
@@ -160,7 +160,7 @@ export const clients = [
         createdAt: "2025-02-22T16:30:00Z"
     },
     {
-        id: 17,
+        id: "17",
         firstName: "Mia",
         lastName: "Wright",
         email: "mia.wright@example.com",
@@ -169,7 +169,7 @@ export const clients = [
         createdAt: "2025-02-23T09:55:00Z"
     },
     {
-        id: 18,
+        id: "18",
         firstName: "Ethan",
         lastName: "Scott",
         email: "ethan.scott@example.com",
@@ -178,7 +178,7 @@ export const clients = [
         createdAt: "2025-02-24T13:35:00Z"
     },
     {
-        id: 19,
+        id: "19",
         firstName: "Charlotte",
         lastName: "Green",
         email: "charlotte.green@example.com",
@@ -187,7 +187,7 @@ export const clients = [
         createdAt: "2025-02-25T10:05:00Z"
     },
     {
-        id: 20,
+        id: "20",
         firstName: "Mason",
         lastName: "Baker",
         email: "mason.baker@example.com",
@@ -196,7 +196,7 @@ export const clients = [
         createdAt: "2025-02-26T11:25:00Z"
     },
     {
-        id: 21,
+        id: "21",
         firstName: "Amelia",
         lastName: "Adams",
         email: "amelia.adams@example.com",
@@ -205,7 +205,7 @@ export const clients = [
         createdAt: "2025-02-27T15:40:00Z"
     },
     {
-        id: 22,
+        id: "22",
         firstName: "Logan",
         lastName: "Nelson",
         email: "logan.nelson@example.com",
@@ -214,7 +214,7 @@ export const clients = [
         createdAt: "2025-02-28T08:50:00Z"
     },
     {
-        id: 23,
+        id: "23",
         firstName: "Harper",
         lastName: "Carter",
         email: "harper.carter@example.com",
@@ -223,7 +223,7 @@ export const clients = [
         createdAt: "2025-03-01T17:15:00Z"
     },
     {
-        id: 24,
+        id: "24",
         firstName: "Elijah",
         lastName: "Mitchell",
         email: "elijah.mitchell@example.com",
@@ -232,7 +232,7 @@ export const clients = [
         createdAt: "2025-03-02T12:20:00Z"
     },
     {
-        id: 25,
+        id: "25",
         firstName: "Evelyn",
         lastName: "Perez",
         email: "evelyn.perez@example.com",
@@ -241,7 +241,7 @@ export const clients = [
         createdAt: "2025-03-03T09:35:00Z"
     },
     {
-        id: 26,
+        id: "26",
         firstName: "Benjamin",
         lastName: "Roberts",
         email: "benjamin.roberts@example.com",
@@ -250,7 +250,7 @@ export const clients = [
         createdAt: "2025-03-04T10:50:00Z"
     },
     {
-        id: 27,
+        id: "27",
         firstName: "Sofia",
         lastName: "Turner",
         email: "sofia.turner@example.com",
@@ -259,7 +259,7 @@ export const clients = [
         createdAt: "2025-03-05T13:45:00Z"
     },
     {
-        id: 28,
+        id: "28",
         firstName: "Jacob",
         lastName: "Phillips",
         email: "jacob.phillips@example.com",
@@ -268,7 +268,7 @@ export const clients = [
         createdAt: "2025-03-06T14:30:00Z"
     },
     {
-        id: 29,
+        id: "29",
         firstName: "Avery",
         lastName: "Campbell",
         email: "avery.campbell@example.com",
@@ -277,7 +277,7 @@ export const clients = [
         createdAt: "2025-03-07T08:05:00Z"
     },
     {
-        id: 30,
+        id: "30",
         firstName: "Henry",
         lastName: "Parker",
         email: "henry.parker@example.com",
@@ -286,7 +286,7 @@ export const clients = [
         createdAt: "2025-03-08T16:10:00Z"
     },
     {
-        id: 31,
+        id: "31",
         firstName: "Ella",
         lastName: "Evans",
         email: "ella.evans@example.com",
@@ -295,7 +295,7 @@ export const clients = [
         createdAt: "2025-03-09T12:00:00Z"
     },
     {
-        id: 32,
+        id: "32",
         firstName: "Alexander",
         lastName: "Edwards",
         email: "alexander.edwards@example.com",
@@ -304,7 +304,7 @@ export const clients = [
         createdAt: "2025-03-10T11:55:00Z"
     },
     {
-        id: 33,
+        id: "33",
         firstName: "Scarlett",
         lastName: "Collins",
         email: "scarlett.collins@example.com",
@@ -313,7 +313,7 @@ export const clients = [
         createdAt: "2025-03-11T15:35:00Z"
     },
     {
-        id: 34,
+        id: "34",
         firstName: "Daniel",
         lastName: "Stewart",
         email: "daniel.stewart@example.com",
@@ -322,7 +322,7 @@ export const clients = [
         createdAt: "2025-03-12T09:20:00Z"
     },
     {
-        id: 35,
+        id: "35",
         firstName: "Aria",
         lastName: "Sanchez",
         email: "aria.sanchez@example.com",
@@ -331,7 +331,7 @@ export const clients = [
         createdAt: "2025-03-13T10:40:00Z"
     },
     {
-        id: 36,
+        id: "36",
         firstName: "Jack",
         lastName: "Morris",
         email: "jack.morris@example.com",
@@ -340,7 +340,7 @@ export const clients = [
         createdAt: "2025-03-14T13:25:00Z"
     },
     {
-        id: 37,
+        id: "37",
         firstName: "Chloe",
         lastName: "Rogers",
         email: "chloe.rogers@example.com",
@@ -349,7 +349,7 @@ export const clients = [
         createdAt: "2025-03-15T14:45:00Z"
     },
     {
-        id: 38,
+        id: "38",
         firstName: "Samuel",
         lastName: "Reed",
         email: "samuel.reed@example.com",
@@ -358,7 +358,7 @@ export const clients = [
         createdAt: "2025-03-16T08:15:00Z"
     },
     {
-        id: 39,
+        id: "39",
         firstName: "Lily",
         lastName: "Cook",
         email: "lily.cook@example.com",
@@ -367,7 +367,7 @@ export const clients = [
         createdAt: "2025-03-17T12:10:00Z"
     },
     {
-        id: 40,
+        id: "40",
         firstName: "Matthew",
         lastName: "Morgan",
         email: "matthew.morgan@example.com",
@@ -376,7 +376,7 @@ export const clients = [
         createdAt: "2025-03-18T16:20:00Z"
     },
     {
-        id: 41,
+        id: "41",
         firstName: "Grace",
         lastName: "Bell",
         email: "grace.bell@example.com",
@@ -385,7 +385,7 @@ export const clients = [
         createdAt: "2025-03-19T10:05:00Z"
     },
     {
-        id: 42,
+        id: "42",
         firstName: "Joseph",
         lastName: "Murphy",
         email: "joseph.murphy@example.com",
@@ -394,7 +394,7 @@ export const clients = [
         createdAt: "2025-03-20T11:50:00Z"
     },
     {
-        id: 43,
+        id: "43",
         firstName: "Hannah",
         lastName: "Bailey",
         email: "hannah.bailey@example.com",
@@ -403,7 +403,7 @@ export const clients = [
         createdAt: "2025-03-21T09:30:00Z"
     },
     {
-        id: 44,
+        id: "44",
         firstName: "David",
         lastName: "Rivera",
         email: "david.rivera@example.com",
@@ -412,7 +412,7 @@ export const clients = [
         createdAt: "2025-03-22T14:55:00Z"
     },
     {
-        id: 45,
+        id: "45",
         firstName: "Zoe",
         lastName: "Cooper",
         email: "zoe.cooper@example.com",
@@ -421,7 +421,7 @@ export const clients = [
         createdAt: "2025-03-23T13:00:00Z"
     },
     {
-        id: 46,
+        id: "46",
         firstName: "Owen",
         lastName: "Richardson",
         email: "owen.richardson@example.com",
@@ -430,7 +430,7 @@ export const clients = [
         createdAt: "2025-03-24T08:40:00Z"
     },
     {
-        id: 47,
+        id: "47",
         firstName: "Nora",
         lastName: "Cox",
         email: "nora.cox@example.com",
@@ -439,7 +439,7 @@ export const clients = [
         createdAt: "2025-03-25T10:15:00Z"
     },
     {
-        id: 48,
+        id: "48",
         firstName: "Gabriel",
         lastName: "Howard",
         email: "gabriel.howard@example.com",
@@ -448,7 +448,7 @@ export const clients = [
         createdAt: "2025-03-26T12:45:00Z"
     },
     {
-        id: 49,
+        id: "49",
         firstName: "Penelope",
         lastName: "Ward",
         email: "penelope.ward@example.com",
@@ -457,7 +457,7 @@ export const clients = [
         createdAt: "2025-03-27T15:10:00Z"
     },
     {
-        id: 50,
+        id: "50",
         firstName: "Julian",
         lastName: "Torres",
         email: "julian.torres@example.com",
@@ -466,7 +466,7 @@ export const clients = [
         createdAt: "2025-03-28T11:35:00Z"
     },
     {
-        id: 51,
+        id: "51",
         firstName: "Riley",
         lastName: "Peterson",
         email: "riley.peterson@example.com",
@@ -475,7 +475,7 @@ export const clients = [
         createdAt: "2025-03-29T09:05:00Z"
     },
     {
-        id: 52,
+        id: "52",
         firstName: "Sebastian",
         lastName: "Gray",
         email: "sebastian.gray@example.com",
@@ -484,7 +484,7 @@ export const clients = [
         createdAt: "2025-03-30T16:25:00Z"
     },
     {
-        id: 53,
+        id: "53",
         firstName: "Layla",
         lastName: "Ramirez",
         email: "layla.ramirez@example.com",
@@ -493,7 +493,7 @@ export const clients = [
         createdAt: "2025-03-31T10:30:00Z"
     },
     {
-        id: 54,
+        id: "54",
         firstName: "Carter",
         lastName: "James",
         email: "carter.james@example.com",
@@ -502,7 +502,7 @@ export const clients = [
         createdAt: "2025-04-01T12:20:00Z"
     },
     {
-        id: 55,
+        id: "55",
         firstName: "Stella",
         lastName: "Watson",
         email: "stella.watson@example.com",

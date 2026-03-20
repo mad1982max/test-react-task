@@ -5,11 +5,11 @@ import { create } from 'zustand';
  * @property {import("../data/mockClients").Client[]} clients - Array of all clients
  * @property {import("../data/mockClients").Client|null} selected - Currently selected client
  * @property {{search: string, status: string}} filters - Active filters for clients
- * @property {number[]} selectedIds - Array of selected client IDs
+ * @property {string[]} selectedIds - Array of selected client IDs
  * @property {(clients: import("../data/mockClients").Client[]) => void} setClients - Set clients array
  * @property {(client: import("../data/mockClients").Client|null) => void} setSelected - Set selected client
  * @property {(key: string, value: string) => void} setFilter - Update a filter value
- * @property {(id: number) => void} toggleId - Toggle client ID in selection
+ * @property {(id: string) => void} toggleId - Toggle client ID in selection
  * @property {() => void} clearSelection - Clear all selections
  * @property {() => import("../data/mockClients").Client[]} getFiltered - Get filtered clients based on current filters
  */

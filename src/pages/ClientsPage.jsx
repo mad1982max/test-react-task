@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+    Alert,
     Button,
     Snackbar,
 } from "@mui/material";
@@ -44,24 +45,25 @@ const ClientsPage = () => {
             <h2>Clients Page</h2>
             <Filters filters={filters} setFilter={setFilter} />
 
-            {/* Bulk Action */}
             {selectedIds.length > 0 && (
                 <Button
                     variant="contained"
+                    fullWidth
                     onClick={() => setOpenDialog(true)}
-                    sx={{ mr: 2 }}
+                    sx={{ mr: 2, }}
                 >
                     Bulk Action
                 </Button>
             )}
 
-            {/* Loading */}
             {isLoading && <ClientsTableSkeleton />}
 
-            {/* Error */}
-            {error && <div>Error: {error.message}</div>}
+            {error && (
+                <Alert severity="error" sx={{ mb: 2 }}>
+                    {error.message}
+                </Alert>
+            )}
 
-            {/* Table */}
             {!isLoading && !error && (
                 <ClientsTable
                     clients={paginated}
@@ -72,7 +74,6 @@ const ClientsPage = () => {
                 />
             )}
 
-            {/* Dialog */}
             <CreateTransactionDialog
                 open={openDialog}
                 accounts={clients.filter((client) => selectedIds.includes(client.id))}
@@ -84,7 +85,6 @@ const ClientsPage = () => {
                 }}
             />
 
-            {/* Snackbar */}
             <Snackbar
                 open={snackbar}
                 autoHideDuration={3000}

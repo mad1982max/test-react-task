@@ -42,6 +42,8 @@ const TRANSACTION_TYPES = [
  * @returns {import('react').ReactElement} Rendered dialog component
  */
 const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSuccess }) => {
+
+    console.log('---CreateTransactionDialog render', { open, account, accounts });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [selectedAccountId, setSelectedAccountId] = useState('');
@@ -55,9 +57,9 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
             setFormData({ transactionType: 1, amount: '', comment: '' });
             setError(null);
             if (account) {
-                setSelectedAccountId(String(account.id ?? ''));
+                setSelectedAccountId((account.id ?? ''));
             } else if (accounts.length === 1) {
-                setSelectedAccountId(String(accounts[0].id ?? ''));
+                setSelectedAccountId((accounts[0].id ?? ''));
             } else {
                 setSelectedAccountId('');
             }
