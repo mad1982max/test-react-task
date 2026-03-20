@@ -12,9 +12,23 @@ import {
     TablePagination,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useClientStore } from "../stores/useClientStore";
-import { ROUTE } from "../constants/routes";
-import { chipStatusColors, clientTableHeaders, tableWrapperStyles } from "../constants/tweaks";
+import { useClientStore } from "../../stores/useClientStore";
+import { ROUTE } from "../../constants/routes";
+import { chipStatusColors, clientTableHeaders, tableWrapperStyles, locale, currencyOptions } from "../../constants/tweaks";
+
+/**
+ * @typedef {Object} ClientsTableProps
+ * @property {import("../../data/mockClients").Client[]} clients - Client rows for the current page.
+ * @property {number} total - Total number of filtered clients.
+ * @property {number} page - Current page index.
+ * @property {number} rowsPerPage - Number of rows rendered per page.
+ * @property {(newPage: number) => void} onPageChange - Pagination page change callback.
+ */
+
+/**
+ * @param {ClientsTableProps} props
+ * @returns {import("react").ReactElement}
+ */
 
 export const ClientsTable = ({
     clients,
@@ -42,11 +56,8 @@ export const ClientsTable = ({
                 <TableBody>
                     {clients.map((client) => {
                         const isSelected = selectedIds.includes(client.id);
-                        const localDateString = new Date(client.createdAt).toLocaleDateString();
-                        const balanceToDisplay = Number(client.balance ?? 0).toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                        });
+                        const localDateString = new Date(client.createdAt).toLocaleDateString(locale);
+                        const balanceToDisplay = Number(client.balance ?? 0).toLocaleString(locale, currencyOptions);
                         return (
                             <TableRow key={client.id}>
                                 <TableCell>

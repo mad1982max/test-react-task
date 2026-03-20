@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useClientStore } from '../stores/useClientStore';
-import { apiFetchClients } from '../api/fetchClients';
+import { getAllClients } from '../api/getAllClients';
 
 /**
  * Custom hook to fetch clients data on component mount
@@ -16,7 +16,7 @@ export const useFetchClients = () => {
     useEffect(() => {
         if (clients.length > 0) return;
         setIsLoading(true);
-        apiFetchClients()
+        getAllClients()
             .then((data) => {
                 setClients(data);
             })

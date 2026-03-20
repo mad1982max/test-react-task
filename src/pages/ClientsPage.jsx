@@ -6,13 +6,13 @@ import {
 } from "@mui/material";
 
 import { Filters } from "../components/Filters";
-import { ClientsTable } from "../components/ClientsTable";
+import { ClientsTable } from "../components/tables/ClientsTable";
 import { useClientStore } from "../stores/useClientStore";
 import { useFetchClients } from "../hooks/useFetchClients";
 import CreateTransactionDialog from "../components/CreateTransactionDialog";
 import { ROWS_PER_PAGE } from "../constants/tweaks";
-import { Layout } from "../components/Layout.jsx";
-import { ClientsTableSkeleton } from "../components/ClientsTableSkeleton";
+import { Layout } from "../components/Layout";
+import { ClientsTableSkeleton } from "../components/skeletons/ClientsTableSkeleton";
 
 const ClientsPage = () => {
     const { isLoading, error } = useFetchClients();

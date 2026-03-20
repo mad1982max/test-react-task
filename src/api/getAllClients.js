@@ -5,7 +5,7 @@ import { clients as mockClients } from "../data/mockClients";
  * @param {number} [delay=1000] - Delay in milliseconds before resolving
  * @returns {Promise<import("../data/mockClients").Client[]>} Promise resolving to array of clients
  */
-export const apiFetchClients = (delay = 1000) => {
+export const getAllClients = (delay = 1000) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(mockClients);

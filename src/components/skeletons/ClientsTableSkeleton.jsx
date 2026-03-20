@@ -1,6 +1,11 @@
 import { Table, TableHead, TableRow, TableCell, TableBody, Skeleton, TableContainer } from "@mui/material";
-import { clientTableHeaders, tableWrapperStyles } from "../constants/tweaks";
+import { clientTableHeaders, tableWrapperStyles } from "../../constants/tweaks";
+import { ROWS_IN_SKELETON } from "../../constants/tweaks";
 
+/**
+ * Renders table skeleton while client data is loading.
+ * @returns {import("react").ReactElement}
+ */
 export const ClientsTableSkeleton = () => {
     return (
         <TableContainer
@@ -15,14 +20,13 @@ export const ClientsTableSkeleton = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {clientTableHeaders.map((_, index) => (
+                    {Array.from({ length: ROWS_IN_SKELETON }).map((_, index) => (
                         <TableRow key={index}>
-                            <TableCell><Skeleton width={120} /></TableCell>
-                            <TableCell><Skeleton width={180} /></TableCell>
-                            <TableCell><Skeleton width={80} /></TableCell>
-                            <TableCell><Skeleton width={100} /></TableCell>
-                            <TableCell><Skeleton width={140} /></TableCell>
-                            <TableCell><Skeleton width={60} /></TableCell>
+                            {clientTableHeaders.map((__, cellIndex) => (
+                                <TableCell key={cellIndex}>
+                                    <Skeleton width="100%" />
+                                </TableCell>
+                            ))}
                         </TableRow>
                     ))}
                 </TableBody>

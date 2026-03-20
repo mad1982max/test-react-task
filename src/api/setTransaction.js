@@ -1,4 +1,4 @@
-import { apiFetchClients } from "./fetchClients";
+import { getAllClients } from "./getAllClients";
 
 /**
  * Fake API to create a transaction and update client balance
@@ -7,7 +7,7 @@ import { apiFetchClients } from "./fetchClients";
  * @returns {Promise<import("../data/mockClients").Client>} Updated client
  */
 export const fakeApiCreate = async (payload, delay = 1000) => {
-    const clients = await apiFetchClients(delay);
+    const clients = await getAllClients(delay);
 
     const client = clients.find((client) => client.id === payload.accountId);
     if (!client) {
