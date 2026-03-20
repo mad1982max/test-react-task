@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
 /**
  * Displays clients in a Material-UI table with columns for name, email, status, balance, created date, and actions
  * @param {ClientsTableProps} props - Component props
- * @returns {JSX.Element} Rendered table component
+ * @returns {import('react').ReactElement} Rendered table component
  */
 export const ClientsTable = ({ clients }) => {
     return (

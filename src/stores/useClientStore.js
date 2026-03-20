@@ -16,7 +16,7 @@ import { create } from 'zustand';
 
 /**
  * Zustand store for managing client data and UI state
- * @type {import('zustand').UseBoundStore<ClientStoreState>}
+ * @type {import('zustand').UseBoundStore<import('zustand').StoreApi<ClientStoreState>>}
  */
 export const useClientStore = create((set, get) => ({
     clients: [],

@@ -4,6 +4,7 @@ import {
     Button, TextField, FormControl, InputLabel, Select,
     MenuItem, Alert, CircularProgress
 } from '@mui/material';
+import { fakeApiCreate } from '@/api/transaction';
 
 /**
  * @typedef {Object} TransactionType
@@ -37,7 +38,7 @@ const TRANSACTION_TYPES = [
  * Dialog component for creating a new transaction
  * Allows users to select transaction type, amount, and optionally a comment
  * @param {CreateTransactionDialogProps} props - Component props
- * @returns {JSX.Element} Rendered dialog component
+ * @returns {import('react').ReactElement} Rendered dialog component
  */
 const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSuccess }) => {
     const [loading, setLoading] = useState(false);
@@ -53,9 +54,9 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
             setFormData({ transactionType: 1, amount: '', comment: '' });
             setError(null);
             if (account) {
-                setSelectedAccountId(account.id ?? '');
+                setSelectedAccountId(String(account.id ?? ''));
             } else if (accounts.length === 1) {
-                setSelectedAccountId(accounts[0].id ?? '');
+                setSelectedAccountId(String(accounts[0].id ?? ''));
             } else {
                 setSelectedAccountId('');
             }
@@ -87,7 +88,9 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
     };
 
     const selectedType = TRANSACTION_TYPES.find((t) => t.value === formData.transactionType);
+    // @ts-ignore
     const balance = parseFloat(activeAccount?.balance || 0);
+    // @ts-ignore
     const amount = parseFloat(formData.amount || 0);
     const newBalance = selectedType?.direction === 'in' ? balance + amount : balance - amount;
 

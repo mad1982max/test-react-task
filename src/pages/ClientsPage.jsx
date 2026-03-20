@@ -6,7 +6,7 @@ import { useFetchClients } from '../hooks/useFetchClients';
 /**
  * Page component that displays all clients in a table
  * Fetches client data on mount and displays loading/error states
- * @returns {JSX.Element} Rendered clients page
+ * @returns {import('react').ReactElement} Rendered clients page
  */
 const ClientsPage = () => {
 
