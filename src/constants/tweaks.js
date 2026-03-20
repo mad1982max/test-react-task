@@ -44,6 +44,15 @@ export const clientTableHeaders = [
     { id: "actions", label: "Actions" },
 ];
 
+/** @typedef {"date"|"type"|"amount"|"status"} TransactionTableHeaderId */
+
+/**
+ * @typedef {Object} TransactionTableHeader
+ * @property {TransactionTableHeaderId} id - Header key.
+ * @property {string} label - Display label.
+ */
+
+/** @type {TransactionTableHeader[]} */
 export const transactionTableHeaders = [
     { id: "date", label: "Date" },
     { id: "type", label: "Type" },

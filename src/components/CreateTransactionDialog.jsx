@@ -103,15 +103,24 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
         <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
             <DialogTitle>Create Transaction</DialogTitle>
             <DialogContent>
-                {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+                {error && (
+                    <Alert
+                        severity="error"
+                        sx={{ mb: 2 }}>
+                        {error}
+                    </Alert>)}
                 <FormControl fullWidth sx={{ mt: 1 }}>
                     <InputLabel>
                         Type
                     </InputLabel>
-                    <Select value={formData.transactionType}
+                    <Select
+                        value={formData.transactionType}
                         onChange={(e) => handleChange('transactionType', e.target.value)}>
                         {TRANSACTION_TYPES.map((t) => (
-                            <MenuItem key={t.value} value={t.value}>{t.label}
+                            <MenuItem
+                                key={t.value}
+                                value={t.value}>
+                                {t.label}
                             </MenuItem>
                         ))}
                     </Select>
@@ -124,11 +133,18 @@ const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSucc
                     onChange={(e) => handleChange('amount', e.target.value)} />
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose} disabled={loading}>
+                <Button
+                    onClick={onClose}
+                    disabled={loading}>
                     Cancel
                 </Button>
-                <Button variant="contained" onClick={handleSubmit} disabled={loading}>
-                    {loading ? <CircularProgress size={16} /> : 'Submit'}
+                <Button
+                    variant="contained"
+                    onClick={handleSubmit}
+                    disabled={loading}>
+                    {loading ?
+                        <CircularProgress size={16} />
+                        : 'Submit'}
                 </Button>
             </DialogActions>
         </Dialog>
