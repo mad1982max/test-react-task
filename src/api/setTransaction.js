@@ -1,17 +1,24 @@
 import { MESSAGE } from "../constants/tweaks";
-import { getClientById } from "./getClientById";
+import { useClientStore } from "../stores/useClientStore";
 
 /**
- * Fake API to create a transaction and update client balance
- * @param {{accountId:string, transactionType:number, amount:number}} payload
- * @param {number} [delay=1000]
- * @returns {Promise<import("../data/mockClients").Client>} Updated client
+ * @typedef {Object} CreateTransactionPayload
+ * @property {string} accountId - Target client account id.
+ * @property {number} transactionType - Transaction type id.
+ * @property {number} amount - Transaction amount.
+ */
+
+/**
+ * Updates a client balance based on transaction direction.
+ * @param {CreateTransactionPayload} payload - Transaction payload.
+ * @param {number} [delay=1000] - Reserved delay argument for API compatibility.
+ * @returns {Promise<import("../data/mockClients").Client>} Updated client data.
  */
 export const fakeApiCreate = async (payload, delay = 1000) => {
-    const client = await getClientById(payload.accountId, delay);
-    if (!client) {
-        throw new Error(MESSAGE.CLIENT_NOT_FOUND);
-    }
+    const { clients } = useClientStore.getState();
+    const client = clients.find((c) => c.id === payload.accountId);
+
+    if (!client) throw new Error(MESSAGE.CLIENT_NOT_FOUND);
 
     const TRANSACTION_TYPES = {
         1: "in", 2: "out", 3: "in", 4: "out", 5: "in", 6: "out",
@@ -27,4 +34,3 @@ export const fakeApiCreate = async (payload, delay = 1000) => {
 
     return updatedClient;
 };
-
