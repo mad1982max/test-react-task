@@ -66,6 +66,11 @@ export const ClientsTable = ({
                                     <Checkbox
                                         checked={isSelected}
                                         onChange={() => toggleId(client.id)}
+                                        slotProps={{
+                                            input: {
+                                                'aria-label': `Select client ${client.firstName} ${client.lastName}`,
+                                            }
+                                        }}
                                     />
                                 </TableCell>
 

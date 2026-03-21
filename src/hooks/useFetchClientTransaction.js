@@ -19,21 +19,43 @@ export const useFetchClientTransaction = (clientId) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        let active = true;
+
         const fetchTransactions = async () => {
             setLoading(true);
+            setError(null);
+
             try {
                 const response = await getClientTransactions(clientId);
+                if (!active) {
+                    return;
+                }
+
                 setTransactions(response);
             } catch (err) {
+                if (!active) {
+                    return;
+                }
+
                 setError(err);
             } finally {
-                setLoading(false);
+                if (active) {
+                    setLoading(false);
+                }
             }
         };
 
         if (clientId) {
             fetchTransactions();
+        } else {
+            setTransactions([]);
+            setError(null);
+            setLoading(false);
         }
+
+        return () => {
+            active = false;
+        };
     }, [clientId]);
 
     return { transactions, loading, error };

@@ -25,10 +25,11 @@ export const fakeApiCreate = async (payload, delay = 1000) => {
     };
     const direction = TRANSACTION_TYPES[payload.transactionType];
 
+    const baseBalance = Number(client.balance ?? 0);
     const newBalance =
         direction === "in"
-            ? Number(client.balance) + payload.amount
-            : Number(client.balance) - payload.amount;
+            ? baseBalance + payload.amount
+            : baseBalance - payload.amount;
 
     const updatedClient = { ...client, balance: String(newBalance) };
 

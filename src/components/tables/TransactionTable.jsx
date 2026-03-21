@@ -41,7 +41,7 @@ export const TransactionTable = ({ transactions }) => {
                                     {balanceToDisplay}
                                 </TableCell>
                                 <TableCell>
-                                    <Chip label={transaction.status} color={transactionStatusColors[transaction.status]} />
+                                    <Chip label={transaction.status} color={transactionStatusColors[transaction.status] || 'default'} />
                                 </TableCell>
                             </TableRow>
                         )

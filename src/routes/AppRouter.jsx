@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ClientsPage from '../pages/ClientsPage';
 import ClientDetailPage from '../pages/ClientDetailPage';

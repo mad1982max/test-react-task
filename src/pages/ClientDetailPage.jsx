@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
     Button, Tabs, Tab, Box, Alert, Stack,
@@ -10,7 +10,7 @@ import { TransactionTable } from "../components/tables/TransactionTable";
 import { TransactionTableSkeleton } from "../components/skeletons/TransactionTableSkeleton";
 import { useFetchClientById } from "../hooks/useFetchClientById";
 import { useFetchClientTransaction } from "../hooks/useFetchClientTransaction";
-import { ClientInfoCardSkeleton } from "../components/skeletons/ClientCardSceleton";
+import { ClientInfoCardSkeleton } from "../components/skeletons/ClientCardSkeleton";
 import { MESSAGE } from "../constants/tweaks";
 
 /** @typedef {{ id?: string }} ClientDetailRouteParams */
@@ -32,7 +32,7 @@ export default function ClientDetailPage() {
     return (
         <Layout>
             <Box sx={{ borderBottom: 1, borderColor: "divider", mt: 2 }}>
-                <Tabs value={tab} onChange={(e, v) => {
+                <Tabs value={tab} onChange={(_, v) => {
                     if (!client || loadingClientById || errorClientById) return;
                     setTab(v);
                 }}>
