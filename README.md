@@ -1,5 +1,13 @@
 # CRM Frontend — Technical Assessment  
-React 19 + MUI v7 + Zustand + React Router v6 + Vite
+
+## Tech Stack
+- React: ^19.2.4
+- React DOM: ^19.2.4
+- MUI Material: ^7.3.9
+- Zustand: ^5.0.12
+- React Router DOM: ^6.30.3
+- Vite: ^8.0.1
+- NO TYPESCRIPT
 
 ## 🚀 Installation
 
