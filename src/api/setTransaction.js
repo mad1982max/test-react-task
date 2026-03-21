@@ -11,7 +11,7 @@ import { useClientStore } from "../stores/useClientStore";
 /**
  * Updates a client balance based on transaction direction.
  * @param {CreateTransactionPayload} payload - Transaction payload.
- * @param {number} [delay=1000] - Reserved delay argument for API compatibility.
+ * @param {number} [delay=1000] - Dummy API delay in milliseconds.
  * @returns {Promise<import("../data/mockClients").Client>} Updated client data.
  */
 export const fakeApiCreate = async (payload, delay = 1000) => {
@@ -32,5 +32,9 @@ export const fakeApiCreate = async (payload, delay = 1000) => {
 
     const updatedClient = { ...client, balance: String(newBalance) };
 
-    return updatedClient;
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(updatedClient);
+        }, delay);
+    });
 };
