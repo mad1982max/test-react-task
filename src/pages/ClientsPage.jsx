@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { Alert, Button, Snackbar } from "@mui/material";
 
 import { Filters } from "../components/Filters";
@@ -10,6 +10,7 @@ import { MESSAGE, ROWS_PER_PAGE, SNACKBAR_AUTO_HIDE_DURATION } from "../constant
 import { Layout } from "../components/Layout";
 import { ClientsTableSkeleton } from "../components/skeletons/ClientsTableSkeleton";
 
+/** @returns {import("react").ReactElement} */
 const ClientsPage = () => {
     const { isLoading, error } = useFetchClients();
     const {
@@ -25,11 +26,16 @@ const ClientsPage = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const [snackbar, setSnackbar] = useState(false);
 
-    const filtered = getFiltered();
+    const filtered = useMemo(() => getFiltered(), [clients, filters]);
 
-    useEffect(() => {
+    /**
+     * @param {"search" | "status"} key
+     * @param {string} value
+     */
+    const handleFilterChange = (key, value) => {
+        setFilter(key, value);
         setPage(0);
-    }, [filters.search, filters.status]);
+    };
 
     const paginatedClients = filtered.slice(
         page * ROWS_PER_PAGE,
@@ -41,7 +47,7 @@ const ClientsPage = () => {
             <h2>Clients Page</h2>
             <Filters
                 filters={filters}
-                setFilter={setFilter} />
+                setFilter={handleFilterChange} />
 
             {selectedIds.length > 0 && (
                 <Button
