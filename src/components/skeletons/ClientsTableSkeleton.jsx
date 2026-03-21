@@ -1,6 +1,5 @@
 import { Table, TableHead, TableRow, TableCell, TableBody, Skeleton, TableContainer } from "@mui/material";
-import { clientTableHeaders, tableWrapperStyles } from "../../constants/tweaks";
-import { ROWS_IN_SKELETON } from "../../constants/tweaks";
+import { clientTableHeaders, tableWrapperStyles, ROWS_IN_SKELETON } from "../../constants/tweaks";
 
 /**
  * Renders table skeleton while client data is loading.

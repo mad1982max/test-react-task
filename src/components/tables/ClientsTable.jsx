@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { useClientStore } from "../../stores/useClientStore";
 import {
     TableContainer,
     Table,
@@ -11,8 +13,6 @@ import {
     TableFooter,
     TablePagination,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-import { useClientStore } from "../../stores/useClientStore";
 import { ROUTE } from "../../constants/routes";
 import { chipStatusColors, clientTableHeaders, tableWrapperStyles, locale, currencyOptions } from "../../constants/tweaks";
 

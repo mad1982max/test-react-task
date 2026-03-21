@@ -4,7 +4,7 @@ import { clients } from "../data/mockClients";
 /**
  * Simulates fetching a client by ID.
  * @param {string} id - Client ID.
- * @param {number} [delay=3000] - Artificial API delay in milliseconds.
+ * @param {number} [delay=3000] - Delay in milliseconds.
  * @returns {Promise<import("../data/mockClients").Client>} Promise that resolves with the client.
  */
 

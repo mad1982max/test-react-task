@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react";
-import { Alert, Button, Snackbar } from "@mui/material";
-
-import { Filters } from "../components/Filters";
-import { ClientsTable } from "../components/tables/ClientsTable";
 import { useClientStore } from "../stores/useClientStore";
 import { useFetchClients } from "../hooks/useFetchClients";
+
+import { Alert, Button, Snackbar } from "@mui/material";
+import { Filters } from "../components/Filters";
+import { ClientsTable } from "../components/tables/ClientsTable";
 import CreateTransactionDialog from "../components/CreateTransactionDialog";
-import { MESSAGE, ROWS_PER_PAGE, SNACKBAR_AUTO_HIDE_DURATION } from "../constants/tweaks";
 import { Layout } from "../components/Layout";
 import { ClientsTableSkeleton } from "../components/skeletons/ClientsTableSkeleton";
+import { MESSAGE, ROWS_PER_PAGE, SNACKBAR_AUTO_HIDE_DURATION } from "../constants/tweaks";
 
 /** @returns {import("react").ReactElement} */
 const ClientsPage = () => {

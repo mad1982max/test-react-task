@@ -6,7 +6,6 @@ export const SNACKBAR_AUTO_HIDE_DURATION = 3000;
 
 /** @typedef {"Active"|"Pending"|"Inactive"} ClientStatus */
 /** @typedef {"success"|"warning"|"default"} ChipColor */
-
 /**
  * Maps client status to MUI chip color.
  * @type {Record<ClientStatus, ChipColor>}
@@ -18,7 +17,6 @@ export const chipStatusColors = {
 };
 
 /** @typedef {"Completed"|"Pending"} TransactionStatus */
-
 /**
  * Maps transaction status to MUI chip color.
  * @type {Record<TransactionStatus, ChipColor>}
@@ -29,13 +27,11 @@ export const transactionStatusColors = {
 };
 
 /** @typedef {"fullname"|"email"|"status"|"balance"|"createdAt"|"actions"} ClientTableHeaderId */
-
 /**
- * @typedef {Object} ClientTableHeader
+ * @typedef {Object} ClientTableHeader - Represents a header in the client table.
  * @property {ClientTableHeaderId} id - Header key.
  * @property {string} label - Display label.
  */
-
 /** @type {ClientTableHeader[]} */
 export const clientTableHeaders = [
     { id: "fullname", label: "Full Name" },
@@ -47,7 +43,6 @@ export const clientTableHeaders = [
 ];
 
 /** @typedef {"date"|"type"|"amount"|"status"} TransactionTableHeaderId */
-
 /**
  * @typedef {Object} TransactionTableHeader
  * @property {TransactionTableHeaderId} id - Header key.
@@ -100,7 +95,6 @@ export const currencyOptions = {
  * @property {string} FAILED - Message shown for general failures.
  * @property {string} TRANSACTION_SUCCESS - Message shown when a transaction is successful.
  */
-
 /** @type {AppMessages} */
 export const MESSAGE = {
     CLIENT_NOT_FOUND: "Client not found",
