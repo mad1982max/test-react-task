@@ -77,3 +77,15 @@ __Folder overview__
 - **stores/** — Zustand-based state containers such as `useClientStore`.
 - **assets/** - icons and images
 
+
+__Pages example__   
+--    
+```/clients```    
+![/clients](image.png)  
+
+*Skeleton*  
+![alt text](image-3.png)
+
+```/client/XXX```  
+![alt text](image-1.png)     
+![alt text](image-2.png)  
