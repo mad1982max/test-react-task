@@ -2,6 +2,8 @@ export const ROWS_PER_PAGE = 20;
 
 export const ROWS_IN_SKELETON = 8;
 
+export const SNACKBAR_AUTO_HIDE_DURATION = 3000;
+
 /** @typedef {"Active"|"Pending"|"Inactive"} ClientStatus */
 /** @typedef {"success"|"warning"|"default"} ChipColor */
 
@@ -96,6 +98,7 @@ export const currencyOptions = {
  * @property {string} ERROR_LOADING_TRANSACTIONS - Message shown when transactions fail to load.
  * @property {string} PAGE_NOT_FOUND - Message shown for unknown routes.
  * @property {string} FAILED - Message shown for general failures.
+ * @property {string} TRANSACTION_SUCCESS - Message shown when a transaction is successful.
  */
 
 /** @type {AppMessages} */
@@ -104,5 +107,6 @@ export const MESSAGE = {
     ERROR_LOADING_CLIENT: "Error loading client",
     ERROR_LOADING_TRANSACTIONS: "Error loading transactions",
     PAGE_NOT_FOUND: "Page not found",
-    FAILED: "Failed"
+    FAILED: "Failed",
+    TRANSACTION_SUCCESS: "Transaction created successfully",
 };

@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
-import {
-    Alert,
-    Button,
-    Snackbar,
-} from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 
 import { Filters } from "../components/Filters";
 import { ClientsTable } from "../components/tables/ClientsTable";
 import { useClientStore } from "../stores/useClientStore";
 import { useFetchClients } from "../hooks/useFetchClients";
 import CreateTransactionDialog from "../components/CreateTransactionDialog";
-import { ROWS_PER_PAGE } from "../constants/tweaks";
+import { MESSAGE, ROWS_PER_PAGE, SNACKBAR_AUTO_HIDE_DURATION } from "../constants/tweaks";
 import { Layout } from "../components/Layout";
 import { ClientsTableSkeleton } from "../components/skeletons/ClientsTableSkeleton";
 
@@ -35,7 +31,7 @@ const ClientsPage = () => {
         setPage(0);
     }, [filters.search, filters.status]);
 
-    const paginated = filtered.slice(
+    const paginatedClients = filtered.slice(
         page * ROWS_PER_PAGE,
         page * ROWS_PER_PAGE + ROWS_PER_PAGE
     );
@@ -43,7 +39,9 @@ const ClientsPage = () => {
     return (
         <Layout>
             <h2>Clients Page</h2>
-            <Filters filters={filters} setFilter={setFilter} />
+            <Filters
+                filters={filters}
+                setFilter={setFilter} />
 
             {selectedIds.length > 0 && (
                 <Button
@@ -66,7 +64,7 @@ const ClientsPage = () => {
 
             {!isLoading && !error && (
                 <ClientsTable
-                    clients={paginated}
+                    clients={paginatedClients}
                     total={filtered.length}
                     page={page}
                     rowsPerPage={ROWS_PER_PAGE}
@@ -87,9 +85,9 @@ const ClientsPage = () => {
 
             <Snackbar
                 open={snackbar}
-                autoHideDuration={3000}
+                autoHideDuration={SNACKBAR_AUTO_HIDE_DURATION}
                 onClose={() => setSnackbar(false)}
-                message="Transaction created successfully"
+                message={MESSAGE.TRANSACTION_SUCCESS}
             />
         </Layout>
     );
