@@ -2,13 +2,44 @@ import { useClientStore } from "../stores/useClientStore";
 import { getClientById } from "../api/getClientById";
 import { useEffect, useState } from "react";
 
-export const useFetchClientById = (clientId) => {
-    const { clients } = useClientStore();
-    const currentId = String(clientId ?? "");
-    const storeClient = clients.find((c) => String(c.id) === currentId) || null;
+/**
+ * @typedef {import("../data/mockClients").Client} Client
+ */
 
-    const [fetchedById, setFetchedById] = useState({ id: "", client: null });
-    const [errorById, setErrorById] = useState({ id: "", error: null });
+/**
+ * @typedef {Object} ClientFetchState
+ * @property {string} id
+ * @property {Client|null} client
+ */
+
+/**
+ * @typedef {Object} ClientErrorState
+ * @property {string} id
+ * @property {Error|null} error
+ */
+
+/**
+ * @typedef {Object} UseFetchClientByIdResult
+ * @property {Client|null} client
+ * @property {boolean} loading
+ * @property {Error|null} error
+ */
+
+/**
+ * @param {string | number | null | undefined} clientId
+ * @returns {UseFetchClientByIdResult}
+ */
+export const useFetchClientById = (clientId) => {
+    const clients = useClientStore((state) => state.clients);
+    const currentId = String(clientId ?? "");
+    const storeClient = clients.find((client) => String(client.id) === currentId) || null;
+
+    const [fetchedById, setFetchedById] = useState(
+        /** @type {ClientFetchState} */({ id: "", client: null })
+    );
+    const [errorById, setErrorById] = useState(
+        /** @type {ClientErrorState} */({ id: "", error: null })
+    );
 
     useEffect(() => {
         if (!currentId || storeClient) {
@@ -41,4 +72,4 @@ export const useFetchClientById = (clientId) => {
     const loading = Boolean(currentId) && !storeClient && !hasSettledForCurrentId;
 
     return { client, loading, error };
-}
+};

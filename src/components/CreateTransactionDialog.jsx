@@ -44,7 +44,8 @@ const TRANSACTION_TYPES = [
  * @returns {import('react').ReactElement} Rendered dialog component
  */
 const CreateTransactionDialog = ({ open, account, accounts = [], onClose, onSuccess }) => {
-    const { setClients, clients } = useClientStore();
+    const setClients = useClientStore((state) => state.setClients);
+    const clients = useClientStore((state) => state.clients);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [selectedAccountId, setSelectedAccountId] = useState('');

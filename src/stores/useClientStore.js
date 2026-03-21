@@ -48,11 +48,11 @@ export const useClientStore = create((set, get) => ({
     getFiltered: () => {
         const { clients, filters } = get();
 
-        return clients.filter((c) => {
+        return clients.filter((client) => {
             const matchSearch =
-                c.firstName.toLowerCase().includes(filters.search.toLowerCase())
-                || c.email.toLowerCase().includes(filters.search.toLowerCase());
-            const matchStatus = filters.status === 'all' || c.status === filters.status;
+                client.firstName.toLowerCase().includes(filters.search.toLowerCase())
+                || client.email.toLowerCase().includes(filters.search.toLowerCase());
+            const matchStatus = filters.status === 'all' || client.status === filters.status;
             return matchSearch && matchStatus;
         });
     },

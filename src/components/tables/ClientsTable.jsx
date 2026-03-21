@@ -37,7 +37,8 @@ export const ClientsTable = ({
     rowsPerPage,
     onPageChange,
 }) => {
-    const { selectedIds, toggleId } = useClientStore();
+    const selectedIds = useClientStore((state) => state.selectedIds);
+    const toggleId = useClientStore((state) => state.toggleId);
 
     return (
         <TableContainer

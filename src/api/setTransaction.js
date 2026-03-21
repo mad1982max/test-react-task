@@ -16,7 +16,7 @@ import { MESSAGE } from "../constants/tweaks";
  */
 export const fakeApiCreate = async (payload, delay = 1000) => {
     const { clients } = useClientStore.getState();
-    const client = clients.find((c) => c.id === payload.accountId);
+    const client = clients.find((client) => client.id === payload.accountId);
 
     if (!client) throw new Error(MESSAGE.CLIENT_NOT_FOUND);
 

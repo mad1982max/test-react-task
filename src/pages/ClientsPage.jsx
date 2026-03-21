@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useClientStore } from "../stores/useClientStore";
 import { useFetchClients } from "../hooks/useFetchClients";
 
@@ -13,20 +13,18 @@ import { MESSAGE, ROWS_PER_PAGE, SNACKBAR_AUTO_HIDE_DURATION } from "../constant
 /** @returns {import("react").ReactElement} */
 const ClientsPage = () => {
     const { isLoading, error } = useFetchClients();
-    const {
-        clients,
-        getFiltered,
-        filters,
-        setFilter,
-        selectedIds,
-        clearSelection,
-    } = useClientStore();
+    const clients = useClientStore((state) => state.clients);
+    const filters = useClientStore((state) => state.filters);
+    const setFilter = useClientStore((state) => state.setFilter);
+    const selectedIds = useClientStore((state) => state.selectedIds);
+    const clearSelection = useClientStore((state) => state.clearSelection);
+    const getFiltered = useClientStore((state) => state.getFiltered);
+
+    const filtered = getFiltered();
 
     const [page, setPage] = useState(0);
     const [openDialog, setOpenDialog] = useState(false);
     const [snackbar, setSnackbar] = useState(false);
-
-    const filtered = useMemo(() => getFiltered(), [clients, filters]);
 
     /**
      * @param {"search" | "status"} key
@@ -34,7 +32,7 @@ const ClientsPage = () => {
      */
     const handleFilterChange = (key, value) => {
         setFilter(key, value);
-        setPage(0);
+        setPage(0); // скидати сторінку на першу при зміні фільтрів
     };
 
     const paginatedClients = filtered.slice(
@@ -45,9 +43,7 @@ const ClientsPage = () => {
     return (
         <Layout>
             <h2>Clients Page</h2>
-            <Filters
-                filters={filters}
-                setFilter={handleFilterChange} />
+            <Filters filters={filters} setFilter={handleFilterChange} />
 
             {selectedIds.length > 0 && (
                 <Button

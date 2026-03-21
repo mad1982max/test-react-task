@@ -9,7 +9,9 @@ import { getAllClients } from '../api/getAllClients';
  * @property {Error|null} error - Error object if fetch failed, null otherwise
  */
 export const useFetchClients = () => {
-    const { setClients, clients } = useClientStore();
+    const clients = useClientStore((state) => state.clients);
+    const setClients = useClientStore((state) => state.setClients);
+
     const [isLoading, setIsLoading] = useState(() => clients.length === 0);
     const [error, setError] = useState(null);
 
